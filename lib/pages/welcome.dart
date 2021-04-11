@@ -33,7 +33,7 @@ class Welcome extends StatelessWidget {
             ),
             Image(
                 image: AssetImage(
-              'lib/images/welcome.jpg',
+                  'assets/images/welcome.jpg' ,
             )),
             SizedBox(height: size.height * 0.05),
             MaterialButton(padding: EdgeInsets.symmetric(
@@ -41,7 +41,7 @@ class Welcome extends StatelessWidget {
                     horizontal: 16.0,
                   ),
               onPressed: () {
-                Get.to(Login());
+                Get.to(() => Login());
               },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0)),

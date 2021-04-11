@@ -36,7 +36,7 @@ class Login extends StatelessWidget {
                 //styling
                 Image(
                     image: AssetImage(
-                  'lib/images/login.jpg',
+                  'assets/images/login.jpg',
                 )),
 
                 TextFormField(
@@ -99,7 +99,7 @@ class Login extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20.0)),
                   color: Colors.deepPurple,
                   onPressed: () {
-                    Get.to(Home());
+                    Get.to(() => Home());
                   },
                 )
               ],

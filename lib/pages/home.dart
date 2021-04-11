@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'QrPage.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -44,7 +47,9 @@ class _HomeState extends State<Home> {
                         Icons.qr_code_scanner_rounded,
                         color: Colors.deepPurple,
                       ),
-                      onPressed: () {}),
+                      onPressed: () {
+                        Get.to(() => QrPage(),transition: Transition.fadeIn);
+                      }),
                   Expanded(
                     child: TextFormField(
                       style: TextStyle(
