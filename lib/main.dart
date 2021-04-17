@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       smartManagement: SmartManagement.keepFactory,
-      initialBinding: Dep(),
+      initialBinding: Dependencies(),
       
       debugShowCheckedModeBanner: false,
       home: Welcome(),
