@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import 'Controllers/QRController.dart';
+import 'Controllers/ServiceCenterDetailsController.dart';
 import 'Controllers/ServiceCentersController.dart';
 
 class Dependencies extends Bindings {
@@ -9,6 +10,7 @@ class Dependencies extends Bindings {
     // Get.lazyPut(() => QRController() , fenix: true);
     Get.put<QRController>(QRController(), permanent: true);
     Get.put<ServiceCentersController>(ServiceCentersController(), permanent: true);
+    Get.put<ServiceCenterDetailsController>(ServiceCenterDetailsController(), permanent: true);
 
   }
 }

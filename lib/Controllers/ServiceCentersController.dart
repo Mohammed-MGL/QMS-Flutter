@@ -1,7 +1,11 @@
+import 'package:qms/pages/ServiceCenterDetailsPage.dart';
+
 import '../Model/ServiceCentersModel.dart';
 import '../Repo/ServiceCentersRepo.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
+
+import 'ServiceCenterDetailsController.dart';
 
 class ServiceCentersController extends GetxController {
   ServiceCentersModel scModel = ServiceCentersModel();
@@ -131,5 +135,10 @@ class ServiceCentersController extends GetxController {
       getAllServiceCenters();
     else
       searchForServiceCenters();
+  }
+
+  void selectServiceCenter(int scId) {
+    Get.find<ServiceCenterDetailsController>().getSCDInfo(scId);
+    Get.to(() => ServiceCenterDetailsPage());
   }
 }

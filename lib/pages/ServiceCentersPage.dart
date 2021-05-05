@@ -88,8 +88,11 @@ class ServiceCentersPage extends StatelessWidget {
                               return Center(child: CircularProgressIndicator());
                             }
                             return ServiceCenterCard(
-                                serviceCenter:
-                                    scController.scModel.results[index]);
+                              serviceCenter:
+                                  scController.scModel.results[index],
+                              pressedOn: () => scController.selectServiceCenter(
+                                  scController.scModel.results[index].id),
+                            );
                           },
                         ),
                       ),
