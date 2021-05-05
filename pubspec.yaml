@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.1.1
+  http: ^0.13.1
   qr_code_scanner: 0.2.1
 
 

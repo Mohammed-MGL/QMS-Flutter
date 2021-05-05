@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'home.dart';
+import 'ServiceCentersPage.dart';
 
 class Login extends StatelessWidget {
   Login({Key key}) : super(key: key);
@@ -99,7 +99,7 @@ class Login extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20.0)),
                   color: Colors.deepPurple,
                   onPressed: () {
-                    Get.to(() => Home());
+                    Get.to(() => ServiceCentersPage());
                   },
                 )
               ],
