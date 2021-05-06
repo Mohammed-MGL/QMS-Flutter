@@ -1,17 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:qms/Controllers/AccountController.dart';
 import 'ServiceCentersPage.dart';
 
 class Login extends StatelessWidget {
   Login({Key key}) : super(key: key);
   var _formKey = GlobalKey<FormState>();
   var isLoading = false;
+
+  String username;
+  String password;
+
+  Widget _buildUsername() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'username'),
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'Username is Required';
+        }
+        return null;
+      },
+      onSaved: (String value) {
+        username = value;
+      },
+    );
+  }
+
+  Widget _buildPassword() {
+    return TextFormField(
+      decoration: InputDecoration(labelText: 'Password'),
+      keyboardType: TextInputType.visiblePassword,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return 'Password is Required';
+        }
+
+        return null;
+      },
+      onSaved: (String value) {
+        password = value;
+      },
+    );
+  }
+
   void _submit() {
     final isValid = _formKey.currentState.validate();
     if (!isValid) {
       return;
     }
     _formKey.currentState.save();
+
+    Get.find<AccountController>()
+        .accountLogin(username: username, password: password);
   }
 
   @override
@@ -38,46 +78,47 @@ class Login extends StatelessWidget {
                     image: AssetImage(
                   'assets/images/login.jpg',
                 )),
-
-                TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'E-Mail',
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.deepPurple, width: 2.0),
-                        borderRadius: BorderRadius.circular(25.0),
-                      )),
-                  onFieldSubmitted: (value) {},
-                  obscureText: true,
-                  validator: (value) {
-                    if (value.isEmpty ||
-                        !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                            .hasMatch(value)) {
-                      return 'Enter a Valid E-Mail!';
-                    }
-                    return null;
-                  },
-                ),
+                _buildUsername(),
+                // TextFormField(
+                //   decoration: InputDecoration(
+                //       labelText: 'E-Mail',
+                //       focusedBorder: OutlineInputBorder(
+                //         borderSide: const BorderSide(
+                //             color: Colors.deepPurple, width: 2.0),
+                //         borderRadius: BorderRadius.circular(25.0),
+                //       )),
+                //   onFieldSubmitted: (value) {},
+                //   obscureText: true,
+                //   validator: (value) {
+                //     if (value.isEmpty ||
+                //         !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                //             .hasMatch(value)) {
+                //       return 'Enter a Valid E-Mail!';
+                //     }
+                //     return null;
+                //   },
+                // ),
                 SizedBox(
                   height: MediaQuery.of(context).size.width * 0.1,
                 ),
-                TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'Password',
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.deepPurple, width: 2.0),
-                        borderRadius: BorderRadius.circular(25.0),
-                      )),
-                  onFieldSubmitted: (value) {},
-                  obscureText: true,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Enter a valid Password!';
-                    }
-                    return null;
-                  },
-                ),
+                _buildPassword(),
+                // TextFormField(
+                //   decoration: InputDecoration(
+                //       labelText: 'Password',
+                //       focusedBorder: OutlineInputBorder(
+                //         borderSide: const BorderSide(
+                //             color: Colors.deepPurple, width: 2.0),
+                //         borderRadius: BorderRadius.circular(25.0),
+                //       )),
+                //   onFieldSubmitted: (value) {},
+                //   obscureText: true,
+                //   validator: (value) {
+                //     if (value.isEmpty) {
+                //       return 'Enter a valid Password!';
+                //     }
+                //     return null;
+                //   },
+                // ),
 
                 SizedBox(
                   height: MediaQuery.of(context).size.width * 0.1,
@@ -98,10 +139,8 @@ class Login extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0)),
                   color: Colors.deepPurple,
-                  onPressed: () {
-                    Get.to(() => ServiceCentersPage());
-                  },
-                )
+                  onPressed: _submit,
+                ),
               ],
             ),
           ),

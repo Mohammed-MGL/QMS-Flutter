@@ -61,7 +61,7 @@ class Welcome extends StatelessWidget {
                     horizontal: 16.0,
                   ),
               onPressed: () {
-                Get.to(Signup());
+                Get.to(SignupPage());
               },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0)),
