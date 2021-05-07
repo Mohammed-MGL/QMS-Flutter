@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'login.dart';
+import 'LoginPage.dart';
 import 'signup.dart';
 
 class Welcome extends StatelessWidget {
@@ -41,7 +41,7 @@ class Welcome extends StatelessWidget {
                     horizontal: 16.0,
                   ),
               onPressed: () {
-                Get.to(() => Login());
+                Get.to(() => LoginPage());
               },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0)),

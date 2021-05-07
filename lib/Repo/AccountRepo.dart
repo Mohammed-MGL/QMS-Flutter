@@ -4,8 +4,11 @@ import 'package:qms/Model/userModel.dart';
 import 'dart:convert' as convert;
 
 import '../Model/ServiceCenterDetailsModel.dart';
+import 'Storage.dart';
 
 class AccountRepo {
+  Storage storage = Storage();
+
   String baseUrl = "192.168.1.2:8000";
   // testurl = 'http://127.0.0.1:8000/API/Service_Center_detail/';
 
@@ -52,7 +55,6 @@ class AccountRepo {
     }
     // if (response.statusCode == 400)
     else {
-      
       Map<String, dynamic> responseMap = (convert.jsonDecode(response.body));
       // responseMap.forEach((k, v) => print('${k}: ${v}'));
 
@@ -61,11 +63,11 @@ class AccountRepo {
     }
   }
 
-    Future<List> accountLogin({
-      @required String username,
+  Future<List> accountLogin({
+    @required String username,
     @required String password,
-    }) async {
-    final urlExtention = 'API/account/token/';
+  }) async {
+    final urlExtention = 'API/account/login/';
 
     final response = await http.post(
       (Uri.http(
@@ -75,34 +77,31 @@ class AccountRepo {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: convert.jsonEncode(<String, String>{
-        'username': username,
-        'password': password
-      }),
+      body: convert.jsonEncode(
+          <String, String>{'username': username, 'password': password}),
     );
-    // if (response.statusCode == 200) Created :)
-    // if (response.statusCode == 400) Bad Request :( show error
 
-    // if (response.statusCode == 201) Created :)
-    // if (response.statusCode == 400) Bad Request :( show error
-
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       Map<String, dynamic> responseMap = (convert.jsonDecode(response.body));
-      // UserModel user = UserModel.fromJson(responseMap);
-      responseMap.forEach((k,v) => print('${k}: ${v}'));
+      String token = responseMap["access"];
+      storage.saveToken(token);
+      print(token);
 
-      // dynamic returnList = [true, user];
-      // return returnList;
-    }
-    // if (response.statusCode == 400)
-    else {
+      dynamic returnList = [true, token];
+      return returnList;
+    } else if (response.statusCode == 401) {
+      String errorMsg = "username and password do not match!";
+
+      dynamic returnList = [false, errorMsg];
+      return returnList;
+    } else {
       print(response.statusCode);
       Map<String, dynamic> responseMap = (convert.jsonDecode(response.body));
-      responseMap.forEach((k, v) => print('${k}: ${v}'));
-
-      // dynamic returnList = [false, responseMap];
-      // return returnList;
+      print(responseMap);
+      responseMap.forEach((k, v) => print('$k: $v'));
+      String errorMsg = "error something went wrong";
+      dynamic returnList = [false, errorMsg];
+      return returnList;
     }
   }
-
 }

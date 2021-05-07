@@ -29,8 +29,9 @@ class ServiceCenterCard extends StatelessWidget {
                 leading: Image(
                   //lina
                   image: NetworkImage(
-                    //serviceCenter.img
-                      "https://domainmundo.com/domain-logos/default-logo.jpg"),
+                    serviceCenter.image,
+                      // "https://domainmundo.com/domain-logos/default-logo.jpg",
+                      ),
                 ),
                 title: Text(serviceCenter.name),
                 subtitle: Text(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qms/pages/ServiceCentersPage.dart';
+import 'package:qms/pages/LoginPage.dart';
 
 // import './pages/home.dart';
 // import './pages/login.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       initialBinding: Dependencies(),
       
       debugShowCheckedModeBanner: false,
-      home: ServiceCentersPage(),
+      home: LoginPage(),
     );
   }
 }

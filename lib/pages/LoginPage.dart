@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:qms/Controllers/AccountController.dart';
 import 'ServiceCentersPage.dart';
 
-class Login extends StatelessWidget {
-  Login({Key key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  LoginPage({Key key}) : super(key: key);
   var _formKey = GlobalKey<FormState>();
   var isLoading = false;
 
