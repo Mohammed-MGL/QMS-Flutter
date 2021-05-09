@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Login1.dart';
 import 'package:get/get.dart';
+import 'package:qms/pages/LoginPage.dart';
+import 'package:qms/pages/signup.dart';
 
-import 'SignUp1.dart';
+
+//import 'SignUp1.dart';
 //import 'login.dart';
 //import 'signup.dart';
 
@@ -58,7 +60,7 @@ class Welcome extends StatelessWidget {
                 horizontal: 34.0,
               ),
               onPressed: () {
-                 Get.to(() => Signup());
+                 Get.to(() => SignupPage());
               },
               // shape: RoundedRectangleBorder(
               //     borderRadius: BorderRadius.circular(20.0)),
@@ -79,7 +81,7 @@ class Welcome extends StatelessWidget {
                 horizontal: 40.0,
               ),
               onPressed: () {
-              // Get.to(() => Login());
+               Get.to(() => LoginPage());
               },
               // shape: RoundedRectangleBorder(
               //     borderRadius: BorderRadius.circular(20.0)),
