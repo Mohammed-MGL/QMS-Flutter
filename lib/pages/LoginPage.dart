@@ -60,7 +60,8 @@ class LoginPage extends StatelessWidget {
         hintText: "Password",
         hintStyle: TextStyle(fontSize: 16, color: Colors.white),
       ),
-      keyboardType: TextInputType.visiblePassword,
+      keyboardType: TextInputType.visiblePassword, 
+       obscureText: true,
       validator: (String value) {
         if (value.isEmpty) {
           return 'Password is Required';
