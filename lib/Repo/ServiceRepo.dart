@@ -1,17 +1,16 @@
 import 'package:http/http.dart' as http;
+import 'package:qms/Model/ServiceModel.dart';
 import 'package:qms/Repo/Storage.dart';
 import 'dart:convert' as convert;
 
-import '../Model/ServiceCenterDetailsModel.dart';
 
-class ServiceCenterDetailsRepo {
+class ServiceRepo {
   Storage storage = Storage();
 
   String baseUrl = "192.168.137.1:8000";
-  // testurl = 'http://127.0.0.1:8000/API/Service_Center_detail/';
 
-  Future<List> fetch_service_center(int serv) async {
-    final urlExtention = '/API/ServiceCenterDetails/$serv';
+  Future<List> getServiceDetails(int serviceID) async {
+    final urlExtention = 'API/ServiceDetails/$serviceID';
     String token = await storage.readToken();
 
     final response = await http.get(
@@ -26,8 +25,8 @@ class ServiceCenterDetailsRepo {
       },
     );
     if (response.statusCode == 200) {
-      ServiceCenterDetailsModel rs =
-          ServiceCenterDetailsModel.fromJson(convert.jsonDecode(response.body));
+      ServiceModel rs =
+          ServiceModel.fromJson(convert.jsonDecode(response.body));
       dynamic returnList = [1, rs];
 
       return returnList;

@@ -12,7 +12,7 @@ class Storage {
     return res;
   }
 
-  Future<void> deleteToken(String token) async {
+  Future<void> deleteToken() async {
     await storage.delete(key: "token");
   }
 

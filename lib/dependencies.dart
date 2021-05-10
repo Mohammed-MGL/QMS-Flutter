@@ -4,6 +4,7 @@ import 'Controllers/AccountController.dart';
 import 'Controllers/QRController.dart';
 import 'Controllers/ServiceCenterDetailsController.dart';
 import 'Controllers/ServiceCentersController.dart';
+import 'Controllers/ServiceContoller.dart';
 
 class Dependencies extends Bindings {
   @override
@@ -15,5 +16,6 @@ class Dependencies extends Bindings {
     Get.put<ServiceCenterDetailsController>(ServiceCenterDetailsController(),
         permanent: true);
     Get.put<AccountController>(AccountController(), permanent: true);
+     Get.put<ServiceController>(ServiceController(), permanent: true);
   }
 }

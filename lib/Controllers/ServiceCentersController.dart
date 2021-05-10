@@ -1,3 +1,4 @@
+import 'package:qms/pages/LoginPage.dart';
 import 'package:qms/pages/ServiceCenterDetailsPage.dart';
 
 import '../Model/ServiceCentersModel.dart';
@@ -56,28 +57,37 @@ class ServiceCentersController extends GetxController {
     );
     pagenum = 1;
     is_Searching = false;
-
-    scModel = await scRepo.getAllServiceCenters(pagenum);
-    response = true;
-    if (scModel.next) {
-      finish = false;
-    } else
-      finish = true;
-    update();
+    var rs = await scRepo.searchForServiceCenters(searchWord, pagenum);
+    if (rs[0] == 1) {
+      scModel = rs[1];
+      response = true;
+      if (scModel.next) {
+        finish = false;
+      } else
+        finish = true;
+      update();
+    } else if (rs[0] == 2) {
+      Get.to(() => LoginPage());
+    }
   }
 
   void getNextPage() async {
     if (!finish) {
       pagenum++;
-      ServiceCentersModel temp = await scRepo.getAllServiceCenters(pagenum);
-      if (scModel.next) {
-        scModel.next = temp.next;
-        finish = false;
-        scModel.results.addAll(temp.results);
-        update();
-      } else {
-        finish = true;
-        print("finish");
+      var rs = await scRepo.searchForServiceCenters(searchWord, pagenum);
+      if (rs[0] == 1) {
+        ServiceCentersModel temp = rs[1];
+        if (scModel.next) {
+          scModel.next = temp.next;
+          finish = false;
+          scModel.results.addAll(temp.results);
+          update();
+        } else {
+          finish = true;
+          print("finish");
+        }
+      } else if (rs[0] == 2) {
+        Get.to(() => LoginPage());
       }
     }
   }
@@ -96,29 +106,36 @@ class ServiceCentersController extends GetxController {
       pagenum = 1;
       is_Searching = true;
       searchWord = searchController.text;
-      scModel = await scRepo.searchForServiceCenters(searchWord, pagenum);
-      response = true;
-      if (scModel.next) {
-        finish = false;
-      } else
-        finish = true;
-      update();
+      var rs = await scRepo.searchForServiceCenters(searchWord, pagenum);
+      if (rs[0] == 1) {
+        scModel = rs[1];
+        response = true;
+        if (scModel.next) {
+          finish = false;
+        } else
+          finish = true;
+        update();
+      } else if (rs[0] == 2) {
+        Get.to(() => LoginPage());
+      }
     }
   }
 
   void getNextSearchPage() async {
     if (!finish) {
       pagenum++;
-      ServiceCentersModel temp =
-          await scRepo.searchForServiceCenters(searchWord, pagenum);
+      var rs = await scRepo.searchForServiceCenters(searchWord, pagenum);
+      if (rs[0] == 1) {
+        ServiceCentersModel temp = rs[1];
 
-      if (scModel.next) {
-        scModel.next = temp.next;
-        finish = true;
-      } else
-        finish = false;
-      scModel.results.addAll(temp.results);
-      update();
+        if (scModel.next) {
+          scModel.next = temp.next;
+          finish = true;
+        } else
+          finish = false;
+        scModel.results.addAll(temp.results);
+        update();
+      }
     }
   }
 
