@@ -1,4 +1,5 @@
 //import 'dart:html';
+import 'dart:ffi';
 import 'dart:ui';
 import 'package:get/get.dart';
 import 'package:qms/Controllers/ServiceContoller.dart';
@@ -28,6 +29,16 @@ class Deteils extends StatelessWidget {
       body: GetBuilder<ServiceController>(
         builder: (controller) {
           final sInfo = controller.sInfo;
+          bool isinq = controller.sInfo.isInQ;
+          var _onpressed = null;
+          Void _ActivateButton() {
+            if (isinq == false) {
+              _onpressed;
+            } else {
+              _onpressed = true;
+            }
+          }
+
           return Center(
             child: Column(
               children: [
@@ -53,7 +64,7 @@ class Deteils extends StatelessWidget {
                   margin: EdgeInsets.all(12.0),
                   height: 170,
                   decoration: BoxDecoration(
-                   // color: Colors.blue[700].withOpacity(.30),
+                    // color: Colors.blue[700].withOpacity(.30),
                     border: Border.all(
                       color: Colors.blue[700],
                     ),
@@ -66,7 +77,7 @@ class Deteils extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(
-                         'Total Number:${sInfo.queueCount} ',
+                          'Total Number:${sInfo.queueCount} ',
                           style: TextStyle(
                             color: Colors.blue[900],
                             fontSize: 14,
@@ -79,7 +90,7 @@ class Deteils extends StatelessWidget {
                         Text(
                           'WaitingTime:${sInfo.waitingTime}',
                           style: TextStyle(
-                           color: Colors.blue[900],
+                            color: Colors.blue[900],
                             fontSize: 14,
                             //fontFamily: 'DancingScript',
                           ),
@@ -179,7 +190,9 @@ class Deteils extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)),
                         color: Colors.white,
-                        onPressed: () {},
+                        onPressed: () {
+                          _ActivateButton();
+                        },
                       ),
                     ],
                   ),
@@ -202,7 +215,9 @@ class Deteils extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0)),
                   color: Colors.white,
-                  onPressed: () {},
+                  onPressed: () {
+                    _ActivateButton();
+                  },
                 ),
               ],
             ),
