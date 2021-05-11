@@ -193,6 +193,8 @@ class Deteils extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20.0)),
                         color: Colors.white,
                         onPressed: () {
+                          onPressed:
+                          null;
                           _ActivateButton();
                         },
                       ),
@@ -218,6 +220,8 @@ class Deteils extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20.0)),
                   color: Colors.white,
                   onPressed: () {
+                      onPressed:
+                          null;
                     _ActivateButton();
                   },
                 ),
