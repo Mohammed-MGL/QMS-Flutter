@@ -168,7 +168,9 @@ class Deteils extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0)),
                           color: Colors.white,
-                          onPressed: () {},
+                          onPressed: () {
+                            isinq = true;
+                          },
                         ),
                       ),
                       SizedBox(
