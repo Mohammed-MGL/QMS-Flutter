@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qms/Controllers/ServiceContoller.dart';
+import 'package:qms/components/MyNavictionBar.dart';
 
 class Deteils extends StatelessWidget {
   const Deteils({Key key}) : super(key: key);
@@ -8,31 +9,7 @@ class Deteils extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        selectedItemColor: Colors.blue[700],
-        unselectedItemColor: Colors.blue[700].withOpacity(.60),
-        selectedFontSize: 14,
-        unselectedFontSize: 14,
-        onTap: (value) {
-          // Respond to item press.
-        },
-        items: [
-          BottomNavigationBarItem(
-            label: ('Home'),
-            icon: Icon(Icons.home),
-          ),
-          BottomNavigationBarItem(
-            label: ('Favorite'),
-            icon: Icon(Icons.favorite),
-          ),
-          BottomNavigationBarItem(
-            label: ('Profile'),
-            icon: Icon(Icons.person),
-          ),
-        ],
-      ),
+      bottomNavigationBar: MyNavictionBar(),
       appBar: AppBar(
         title: Text('Service Details',
             style: TextStyle(

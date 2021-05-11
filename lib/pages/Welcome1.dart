@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qms/Controllers/ServiceContoller.dart';
 import 'package:qms/pages/LoginPage.dart';
-import 'package:qms/pages/deteilsService.dart';
+//import 'package:qms/pages/deteilsService.dart';
 import 'package:qms/pages/signup.dart';
+
+import 'DetailesService1.dart';
 
 
 //import 'SignUp1.dart';
