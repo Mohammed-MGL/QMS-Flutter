@@ -53,7 +53,7 @@ class Deteils extends StatelessWidget {
                   margin: EdgeInsets.all(12.0),
                   height: 170,
                   decoration: BoxDecoration(
-                    color: Colors.blue[700].withOpacity(.30),
+                   // color: Colors.blue[700].withOpacity(.30),
                     border: Border.all(
                       color: Colors.blue[700],
                     ),
