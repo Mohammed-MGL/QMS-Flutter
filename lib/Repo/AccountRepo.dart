@@ -9,7 +9,7 @@ import 'Storage.dart';
 class AccountRepo {
   Storage storage = Storage();
 
-  String baseUrl = "192.168.137.1:8000";
+  String baseUrl = "192.168.1.2:8000";
   // testurl = 'http://127.0.0.1:8000/API/Service_Center_detail/';
 
   Future<List> accountRegister({

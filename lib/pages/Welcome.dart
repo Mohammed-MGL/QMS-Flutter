@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:qms/Controllers/ServiceContoller.dart';
 import 'package:qms/pages/LoginPage.dart';
 //import 'package:qms/pages/deteilsService.dart';
+import 'package:qms/pages/SignupPage.dart';
 
 import 'DetailesService1.dart';
 

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:qms/Model/ServiceCenterDetailsModel.dart';
 
 class ServiceCard extends StatelessWidget {
-  final String name;
+  final Services service;
+  final Function pressedOn;
+
   ServiceCard({
     Key key,
-    this.name,
+    this.service,
+    this.pressedOn,
   }) : super(key: key);
 
   @override
@@ -14,8 +18,9 @@ class ServiceCard extends StatelessWidget {
       child: Card(
         clipBehavior: Clip.antiAlias,
         child: ListTile(
+          onTap: (service.iSActive) ? pressedOn : null,
           leading: Icon(Icons.point_of_sale),
-          title: Text(name),
+          title: Text(service.name),
           subtitle: Text(
             'انقر للتفاصيل',
             style: TextStyle(color: Colors.black.withOpacity(0.6)),
@@ -25,4 +30,3 @@ class ServiceCard extends StatelessWidget {
     );
   }
 }
-

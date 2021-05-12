@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qms/pages/ServiceCentersPage.dart';
 import 'package:qms/pages/LoginPage.dart';
-import 'package:qms/pages/signup.dart';
+import 'package:qms/pages/SignupPage.dart';
 
 // import './pages/home.dart';
 // import './pages/login.dart';
@@ -27,5 +27,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-//   String baseUrl = "192.168.1.2:8000";

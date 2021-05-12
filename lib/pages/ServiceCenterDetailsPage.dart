@@ -34,7 +34,7 @@ class ServiceCenterDetailsPage extends StatelessWidget {
           //     services: [Services(name: "testo")]);
 
           return SingleChildScrollView(
-                        child: Column(
+            child: Column(
               children: [
                 Stack(
                   alignment: Alignment.bottomCenter,
@@ -53,7 +53,7 @@ class ServiceCenterDetailsPage extends StatelessWidget {
                         'assets/images/syy.jpg',
                         // mySC.serviceCenter.icon,
                       ),
-                    )),
+                    ),),
                   ],
                 ),
                 Container(
@@ -106,14 +106,15 @@ class ServiceCenterDetailsPage extends StatelessWidget {
                           fontSize: 20.0)),
                 ),
                 ListView.builder(
-                                  physics: NeverScrollableScrollPhysics(),
-                                                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
                   itemCount: mySC.services.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ServiceCard(
-                        name: mySC.services[index].name,
+                        service: mySC.services[index],
+                        pressedOn: (){},
                       ),
                     );
                   },

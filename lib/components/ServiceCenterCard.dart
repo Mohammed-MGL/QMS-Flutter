@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../Model/ServiceCentersModel.dart';
 
@@ -14,50 +15,36 @@ class ServiceCenterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Card(
-        //color: Colors.grey,
-        elevation: 4,
-        clipBehavior: Clip.antiAlias,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              ListTile(
-                onTap: pressedOn,
-                leading: Image(
-                  //lina
-                  image: NetworkImage(
-                    serviceCenter.image,
-                      // "https://domainmundo.com/domain-logos/default-logo.jpg",
-                      ),
-                ),
-                title: Text(serviceCenter.name),
-                subtitle: Text(
-                  serviceCenter.location,
-                  style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                ),
-              ),
-              Row(
-                children: [
-                  Container(
-                    width: 20,
-                    height: 20,
+    return Card(
+      margin: const EdgeInsets.all(8.0),
+      elevation: 4,
+      clipBehavior: Clip.antiAlias,
+      child: ListTile(
 
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-
-                      border: Border.all(
-                        color: Colors.green,
-                      ), //Border.all
-                      borderRadius: BorderRadius.circular(200),
-                    ), //BoxDecoration
-                  ),
-                ],
-              )
-            ],
+        trailing: Container(
+          margin:EdgeInsets.only(top: 35) ,
+          width: 20,
+          height: 20,
+          decoration: BoxDecoration(
+            color: (serviceCenter.isOnline) ? Colors.green : Colors.red,
+            border: Border.all(
+              color: (serviceCenter.isOnline) ? Colors.green : Colors.red,
+            ),
+            borderRadius: BorderRadius.circular(50),
           ),
+        ),
+        enabled: (serviceCenter.isOnline) ? true : false,
+        onTap: (serviceCenter.isOnline) ? pressedOn : null,
+        leading: CircleAvatar(
+          radius: Get.width * 0.08,
+          backgroundImage: NetworkImage(
+            serviceCenter.image,
+          ),
+        ),
+        title: Text(serviceCenter.name),
+        subtitle: Text(
+          serviceCenter.location,
+          style: TextStyle(color: Colors.black.withOpacity(0.6)),
         ),
       ),
     );
