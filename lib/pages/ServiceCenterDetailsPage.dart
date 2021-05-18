@@ -18,7 +18,7 @@ class ServiceCenterDetailsPage extends StatelessWidget {
         // titleSpacing: 00.0,
         // toolbarHeight: 45.2,
 
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.blue[700],
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.favorite),

@@ -7,6 +7,7 @@ import 'package:qms/pages/FavoritePage.dart';
 import 'package:qms/pages/Reservationpage.dart';
 import 'package:qms/pages/ServiceCentersPage.dart';
 import 'package:qms/pages/LoginPage.dart';
+import 'package:qms/pages/ServiceDeteils.dart';
 import 'package:qms/pages/SignupPage.dart';
 
 // import './pages/home.dart';
@@ -14,6 +15,7 @@ import 'package:qms/pages/SignupPage.dart';
 import './pages/welcome1.dart';
 //import './pages/Login1.dart';
 import 'dependencies.dart';
+import 'pages/ServiceCenterDetailsPage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +31,8 @@ Future<void> main() async {
     smartManagement: SmartManagement.keepFactory,
     initialBinding: Dependencies(),
     debugShowCheckedModeBanner: false,
-    home: _defaultHome,
+    home:
+    _defaultHome,
     getPages: [
         GetPage(name: 'page0', page: () => ServiceCentersPage()),
         GetPage(name: 'page1', page: () => FavoritePage()),

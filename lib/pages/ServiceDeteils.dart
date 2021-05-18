@@ -2,6 +2,7 @@
 import 'dart:ui';
 import 'package:get/get.dart';
 import 'package:qms/Controllers/ServiceContoller.dart';
+import 'package:qms/Model/ServiceModel.dart';
 import 'package:qms/components/MyNavictionBar.dart';
 import 'package:flutter/material.dart';
 
@@ -29,8 +30,15 @@ class ServiceDeteils extends StatelessWidget {
       ),
       body: GetBuilder<ServiceController>(
         builder: (controller) {
-          final sInfo = controller.sInfo;
-          bool isinq = controller.sInfo.isInQ;
+          // final sInfo = ServiceModel(
+          //     id: 1,
+          //     isInQ: false,
+          //     name: 'name',
+          //     queueCount: 5,
+          //     waitingTime: "5 min");
+          bool isinq =true;
+           final sInfo = controller.sInfo;
+          //final sInfo =ServiceModel();
 
           return Center(
             child: Column(
@@ -51,13 +59,13 @@ class ServiceDeteils extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.width * 0.08,
+                  height: MediaQuery.of(context).size.width * 0.1,
                 ),
                 Container(
                   margin: EdgeInsets.all(12.0),
                   height: 170,
                   decoration: BoxDecoration(
-                    // color: Colors.blue[700].withOpacity(.30),
+                    color: Colors.blue[700].withOpacity(.20),
                     border: Border.all(
                       color: Colors.blue[700],
                     ),
@@ -98,9 +106,9 @@ class ServiceDeteils extends StatelessWidget {
                   //   crossAxisAlignment: CrossAxisAlignment.center,
                   //   children: [
                   //     RaisedButton(
-                  //       padding: EdgeInsets.symmetric(
-                  //         vertical: 8.0,
-                  //         horizontal: 15.0,
+                        // padding: EdgeInsets.symmetric(
+                        //    vertical: 8.0,
+                        //   horizontal: 15.0,
                   //       ),
                   //       child: Text(
                   //         "Book Now ",
@@ -136,23 +144,27 @@ class ServiceDeteils extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.width * 0.2,
                 ),
-                Container(
-                    decoration: BoxDecoration(
+                Container( 
+                    decoration: BoxDecoration( color: Colors.blue[700].withOpacity(.20),
                         border: Border.all(
                       color: Colors.blue[700],
                     )),
                     child: (isinq)
-                        ? Row(
+                        ? Row( 
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               MaterialButton(
                                 child: Text(
-                                  " Delete Book",
+                                  " Delete Book ",
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     color: Colors.blue[700],
+                                    
                                   ),
                                 ),
+                                padding: EdgeInsets.symmetric(
+                           vertical: 6.0,
+                          horizontal: 6.0,),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20.0)),
                                 color: Colors.white,
@@ -168,19 +180,21 @@ class ServiceDeteils extends StatelessWidget {
                               ),
                               MaterialButton(
                                 padding: EdgeInsets.symmetric(
-                                  vertical: 10.0,
-                                  horizontal: 15.0,
+                                  vertical: 6.0,
+                                  horizontal: 20.0,
                                 ),
                                 child: Text(
-                                  " I arrived",
+                                  " I arrived ",
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     color: Colors.blue[700],
                                   ),
                                 ),
+                                
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20.0)),
                                 color: Colors.white,
+                                
                                 onPressed: (isinq)
                                     ? () {
                                         controller.userInCenter(sInfo.id);
