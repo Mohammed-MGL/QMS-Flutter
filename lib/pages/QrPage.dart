@@ -33,7 +33,7 @@ class _QrPageState extends State<QrPage> {
                     key: qrKey,
                     overlay: QrScannerOverlayShape(
                       borderRadius: 50,
-                      borderColor: Colors.purple,
+                      borderColor: Colors.blue[700],
                       cutOutBottomOffset: Get.height * .08,
                       borderLength: Get.width * scale,
                       borderWidth: 8,
