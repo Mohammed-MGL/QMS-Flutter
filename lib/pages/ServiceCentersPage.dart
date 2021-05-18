@@ -14,21 +14,21 @@ class ServiceCentersPage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: MyNavictionBar(selectedItem: 0,),
       appBar: AppBar(
-        title: Text('Home', style: TextStyle(color: Colors.white)),
+        title: Text('Services Center', style: TextStyle(color: Colors.white,  fontFamily: 'DancingScript', fontSize: 28,)),
         titleSpacing: 00.0,
         centerTitle: true,
         toolbarHeight: 60.2,
         elevation: 10,
-        backgroundColor: Colors.deepPurple,
+        backgroundColor:Colors.blue[700],
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.notifications_active),
             onPressed: () {},
           ),
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {},
-          )
+          // IconButton(
+          //   icon: Icon(Icons.settings),
+          //   onPressed: () {},
+          // )
         ],
       ),
       body: GetBuilder<ServiceCentersController>(builder: (scController) {
@@ -42,7 +42,7 @@ class ServiceCentersPage extends StatelessWidget {
                   IconButton(
                       icon: Icon(
                         Icons.qr_code_scanner_rounded,
-                        color: Colors.deepPurple,
+                        color:Colors.blue[700],
                       ),
                       onPressed: () {
                         Get.to(() => QrPage(), transition: Transition.fadeIn);

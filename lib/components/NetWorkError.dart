@@ -26,13 +26,15 @@ class NetWorkError extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.width * 0.1,
                 ),
-                InkWell(
-                  child: Text("Try Again ? ",
-                      style: TextStyle(
-                          color: Colors.cyan,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0)),
-                  onTap: buttonHandler,
+                Container(color:  Colors.grey[200],
+                  child: InkWell(
+                    child: Text(" Try Again ? ",
+                        style: TextStyle(
+                            color: Colors.black54,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0)),
+                    onTap: buttonHandler,
+                  ),
                 ),
               ],
             ),
