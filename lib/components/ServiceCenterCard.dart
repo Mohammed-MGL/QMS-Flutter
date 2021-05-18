@@ -21,6 +21,20 @@ class ServiceCenterCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: ListTile(
 
+        
+        enabled: (serviceCenter.isOnline) ? true : false,
+        onTap: (serviceCenter.isOnline) ? pressedOn : null,
+        leading: CircleAvatar(
+          radius: Get.width * 0.08,
+          backgroundImage: NetworkImage(
+            serviceCenter.icon,
+          ),
+        ),
+        title: Text(serviceCenter.name),
+        subtitle: Text(
+          serviceCenter.location,
+          style: TextStyle(color: Colors.black.withOpacity(0.6)),
+        ),
         trailing: Container(
           margin:EdgeInsets.only(top: 35) ,
           width: 20,
@@ -32,19 +46,6 @@ class ServiceCenterCard extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(50),
           ),
-        ),
-        enabled: (serviceCenter.isOnline) ? true : false,
-        onTap: (serviceCenter.isOnline) ? pressedOn : null,
-        leading: CircleAvatar(
-          radius: Get.width * 0.08,
-          backgroundImage: NetworkImage(
-            serviceCenter.image,
-          ),
-        ),
-        title: Text(serviceCenter.name),
-        subtitle: Text(
-          serviceCenter.location,
-          style: TextStyle(color: Colors.black.withOpacity(0.6)),
         ),
       ),
     );

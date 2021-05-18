@@ -1,14 +1,16 @@
 class ServiceModel {
-  String serviceName;
+  int id;
+  String name;
   int queueCount;
   String waitingTime;
   bool isInQ;
 
   ServiceModel(
-      {this.serviceName, this.queueCount, this.waitingTime, this.isInQ});
+      {this.id, this.name, this.queueCount, this.waitingTime, this.isInQ});
 
   ServiceModel.fromJson(Map<String, dynamic> json) {
-    serviceName = json['serviceName'];
+    id = json['id'];
+    name = json['name'];
     queueCount = json['queueCount'];
     waitingTime = json['waitingTime'];
     isInQ = json['is_inQ'];
@@ -16,7 +18,8 @@ class ServiceModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['serviceName'] = this.serviceName;
+    data['id'] = this.id;
+    data['name'] = this.name;
     data['queueCount'] = this.queueCount;
     data['waitingTime'] = this.waitingTime;
     data['is_inQ'] = this.isInQ;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qms/Controllers/ServiceCenterDetailsController.dart';
+import 'package:qms/Controllers/ServiceContoller.dart';
 import 'package:qms/Model/ServiceCenterDetailsModel.dart';
 import 'package:qms/components/MyNavictionBar.dart';
 import 'package:qms/components/ServiceCard.dart';
@@ -11,7 +12,7 @@ class ServiceCenterDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: MyNavictionBar(),
+      bottomNavigationBar: MyNavictionBar(selectedItem : 1),
       appBar: AppBar(
         //title: Text('Details Center', style: TextStyle(color: Colors.white)),
         // titleSpacing: 00.0,
@@ -40,20 +41,19 @@ class ServiceCenterDetailsPage extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   children: [
                     Image(
-                      image: AssetImage(
-                        'assets/images/syyy.jpg',
-                        // mySC.serviceCenter.image,
+                      image: NetworkImage(
+                        mySC.serviceCenter.image,
                       ),
                     ),
                     Positioned(
-                        child: CircleAvatar(
-                      radius: 65,
-                      backgroundColor: Colors.white,
-                      backgroundImage: AssetImage(
-                        'assets/images/syy.jpg',
-                        // mySC.serviceCenter.icon,
+                      child: CircleAvatar(
+                        radius: 65,
+                        backgroundColor: Colors.white,
+                        backgroundImage: NetworkImage(
+                          mySC.serviceCenter.icon,
+                        ),
                       ),
-                    ),),
+                    ),
                   ],
                 ),
                 Container(
@@ -114,7 +114,6 @@ class ServiceCenterDetailsPage extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: ServiceCard(
                         service: mySC.services[index],
-                        pressedOn: (){},
                       ),
                     );
                   },

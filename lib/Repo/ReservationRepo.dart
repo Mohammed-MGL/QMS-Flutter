@@ -1,24 +1,20 @@
 import 'package:http/http.dart' as http;
+import 'package:qms/Model/ReservationModel.dart';
 import 'package:qms/Repo/Storage.dart';
 import 'dart:convert' as convert;
 
-import '../Model/ServiceCenterDetailsModel.dart';
-
-class ServiceCenterDetailsRepo {
+class ReservationRepo {
   Storage storage = Storage();
 
   String baseUrl = "192.168.1.100:8000";
   // testurl = 'http://127.0.0.1:8000/API/Service_Center_detail/';
 
-  Future<List> fetch_service_center(int serv) async {
-    final urlExtention = '/API/ServiceCenterDetails/$serv';
+  Future<List> getReservation(int pagenum) async {
+    final urlExtention = '/API/UserReservations/';
     String token = await storage.readToken();
 
     final response = await http.get(
-      (Uri.http(
-        baseUrl,
-        urlExtention,
-      )),
+      (Uri.http(baseUrl, urlExtention, {"page": "$pagenum"})),
       headers: <String, String>{
         "Accept": "application/json",
         "Content-Type": "application/x-www-form-urlencoded",
@@ -26,8 +22,8 @@ class ServiceCenterDetailsRepo {
       },
     );
     if (response.statusCode == 200) {
-      ServiceCenterDetailsModel rs =
-          ServiceCenterDetailsModel.fromJson(convert.jsonDecode(response.body));
+      ReservationModel rs =
+          ReservationModel.fromJson(convert.jsonDecode(response.body));
       dynamic returnList = [1, rs];
 
       return returnList;

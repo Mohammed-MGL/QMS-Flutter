@@ -19,4 +19,17 @@ class ServiceCenterDetailsController extends GetxController {
        Get.to(() => LoginPage());
     }
   }
+
+  // void getSDinfo(int sid) async{
+  //       var rs = await scdrepo.fetch_service_center(iD);
+
+  //   if (rs[0] == 1) {
+  //     scdInfo = rs[1];
+
+  //     update();
+  //   }
+  //   else if (rs[0] == 1){
+  //      Get.to(() => LoginPage());
+  //   }
+  // }
 }

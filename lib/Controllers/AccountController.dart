@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:qms/Controllers/ServiceCentersController.dart';
+import 'package:qms/Repo/Storage.dart';
 import 'package:qms/pages/ServiceCentersPage.dart';
 
 // import '../Model/UserModel.dart';
@@ -8,6 +10,9 @@ import 'package:qms/Repo/AccountRepo.dart';
 
 class AccountController extends GetxController {
   // ServiceCenterDetailsModel scdInfo = ServiceCenterDetailsModel();
+
+  Storage storage = Storage();
+
   AccountRepo accountRepo = AccountRepo();
 
   void accountRegister({
@@ -55,8 +60,8 @@ class AccountController extends GetxController {
     );
 
     if (res[0]) {
+      Get.find<ServiceCentersController>().getAllServiceCenters();
       Get.to(() => ServiceCentersPage());
-
     } else {
       Get.defaultDialog(
         title: "Error",
@@ -65,5 +70,16 @@ class AccountController extends GetxController {
     }
 
     update();
+  }
+
+  Future<bool> isLogin() async {
+    String token = await storage.readToken();
+    if (token != '') return true;
+    return false;
+  }
+
+  void logout() {
+    Storage s = Storage();
+    s.deleteToken();
   }
 }

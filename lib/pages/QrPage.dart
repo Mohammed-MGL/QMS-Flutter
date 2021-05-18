@@ -116,11 +116,12 @@ class _QrPageState extends State<QrPage> {
     this.controller = controller;
     controller.scannedDataStream.listen((event) {
       setState(() {
-        print("QR Scaned");
-        print(event.code);
+        print("QR Scanned");
+        // print(event.code);
+
         controller.pauseCamera();
         //controller.resumeCamera();
-
+        
         // qrController.printCode(qrText);
       });
 

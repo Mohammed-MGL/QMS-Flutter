@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:qms/Controllers/ServiceContoller.dart';
 import 'package:qms/Model/ServiceCenterDetailsModel.dart';
 
 class ServiceCard extends StatelessWidget {
@@ -18,13 +20,21 @@ class ServiceCard extends StatelessWidget {
       child: Card(
         clipBehavior: Clip.antiAlias,
         child: ListTile(
-          onTap: (service.iSActive) ? pressedOn : null,
-          leading: Icon(Icons.point_of_sale),
+          enabled: service.iSActive,
+          onTap: (service.iSActive)
+              ? () {
+                  Get.find<ServiceController>().getServiceDetails(service.id);
+                }
+              : null,
+          leading: Icon(Icons.image),
           title: Text(service.name),
           subtitle: Text(
             'انقر للتفاصيل',
             style: TextStyle(color: Colors.black.withOpacity(0.6)),
           ),
+          trailing:(service.iSActive)? Text(
+              "${service.qdetails.customersNum}\n ${service.qdetails.waitingtime}"):
+              Text("Offline"),
         ),
       ),
     );

@@ -6,16 +6,13 @@ import 'package:http/http.dart' as http;
 
 class ServiceCentersRepo {
   Storage storage = Storage();
-  String baseUrl = "192.168.1.2:8000";
+  String baseUrl = "192.168.1.100:8000";
 
   Future<List> getAllServiceCenters(int pagenum) async {
     final urlExtention = '/API/allServiceCenter/';
     String token = await storage.readToken();
     final response = await http.get(
-      (Uri.http(
-        baseUrl,
-        urlExtention,
-      )),
+      (Uri.http(baseUrl, urlExtention, {"page": "$pagenum"})),
       headers: <String, String>{
         "Accept": "application/json",
         "Content-Type": "application/x-www-form-urlencoded",
@@ -51,6 +48,8 @@ class ServiceCentersRepo {
     if (response.statusCode == 200) {
       ServiceCentersModel rs =
           ServiceCentersModel.fromJson(convert.jsonDecode(response.body));
+      print("getAllServiceCenters<<  ${rs.results.length} >>");
+
       dynamic returnList = [1, rs];
 
       return returnList;

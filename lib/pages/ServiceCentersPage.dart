@@ -12,7 +12,7 @@ class ServiceCentersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      bottomNavigationBar: MyNavictionBar(),
+      bottomNavigationBar: MyNavictionBar(selectedItem: 0,),
       appBar: AppBar(
         title: Text('Home', style: TextStyle(color: Colors.white)),
         titleSpacing: 00.0,
@@ -84,7 +84,7 @@ class ServiceCentersPage extends StatelessWidget {
                           itemBuilder: (context, index) {
                             if (index ==
                                     scController.scModel.results.length - 1 &&
-                                scController.finish == false) {
+                                scController.is_ThereNext == true) {
                               return Center(child: CircularProgressIndicator());
                             }
                             return ServiceCenterCard(

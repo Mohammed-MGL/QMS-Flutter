@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:qms/pages/LoginPage.dart';
 import '../Controllers/AccountController.dart';
 
 class SignupPage extends StatelessWidget {
@@ -247,93 +248,105 @@ class SignupPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: <Widget>[
-      Image.asset(
-        'assets/images/g.jpg',
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        fit: BoxFit.cover,
-      ),
-      Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          title: Text('Sign Up',
-              style: TextStyle(
-                color: Colors.blue[700],
-                fontFamily: 'DancingScript',
-                fontSize: 28,
-              )),
-          titleSpacing: 00.0,
-          centerTitle: true,
-          toolbarHeight: 50.2,
-          elevation: 10,
-          backgroundColor: Colors.white,
+    return Stack(
+      children: <Widget>[
+        Image.asset(
+          'assets/images/g.jpg',
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          fit: BoxFit.cover,
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  alignment: Alignment.center,
-                  //  width: MediaQuery.of(context).size.width,
-                  child: Text(
-                    'Inter Your Details :',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 35,
-                      fontFamily: 'DancingScript',
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            title: Text('Sign Up',
+                style: TextStyle(
+                  color: Colors.blue[700],
+                  fontFamily: 'DancingScript',
+                  fontSize: 28,
+                )),
+            titleSpacing: 00.0,
+            centerTitle: true,
+            toolbarHeight: 50.2,
+            elevation: 10,
+            backgroundColor: Colors.white,
+          ),
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Container(
+                    alignment: Alignment.center,
+                    //  width: MediaQuery.of(context).size.width,
+                    child: Text(
+                      'Inter Your Details :',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 35,
+                        fontFamily: 'DancingScript',
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.width * 0.03,
-              ),
-              //margin: EdgeInsets.all(24),
-              Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Image(
-                        image: AssetImage(
-                      'lib/images/login.jpg',
-                    )),
-                    _buildUsername(),
-                    _buildEmail(),
-                    _buildPassword(),
-                    _buildPassword2(),
-                    _buildFirstName(),
-                    _buildLastName(),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.width * 0.03,
-                    ),
-                    RaisedButton(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 10.0,
-                        horizontal: 20.0,
-                      ),
-                      child: Text(
-                        " Submit ",
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.blue[700],
-                        ),
-                      ),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(60.0)),
-                      color: Colors.white,
-                      onPressed: () => _submit(),
-                    )
-                  ],
+                SizedBox(
+                  height: MediaQuery.of(context).size.width * 0.03,
                 ),
-              ),
-            ],
+                //margin: EdgeInsets.all(24),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image(
+                          image: AssetImage(
+                        'lib/images/login.jpg',
+                      )),
+                      _buildUsername(),
+                      _buildEmail(),
+                      _buildPassword(),
+                      _buildPassword2(),
+                      _buildFirstName(),
+                      _buildLastName(),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.width * 0.03,
+                      ),
+                      MaterialButton(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10.0,
+                          horizontal: 20.0,
+                        ),
+                        child: Text(
+                          " Submit ",
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.blue[700],
+                          ),
+                        ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(60.0)),
+                        color: Colors.white,
+                        onPressed: () => _submit(),
+                      ),
+                      Center(
+                      child: InkWell(
+                        child: Text('Signup ? ',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 15.0)),
+                        onTap: () {
+                          Get.to(() => LoginPage());
+                        },
+                      ),
+                    ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      )
-    ]);
+        )
+      ],
+    );
   }
 }

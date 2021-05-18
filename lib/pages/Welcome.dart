@@ -5,7 +5,7 @@ import 'package:qms/pages/LoginPage.dart';
 //import 'package:qms/pages/deteilsService.dart';
 import 'package:qms/pages/SignupPage.dart';
 
-import 'DetailesService1.dart';
+import 'ServiceDeteils.dart';
 
 
 //import 'SignUp1.dart';
@@ -66,7 +66,7 @@ class Welcome extends StatelessWidget {
                 horizontal: 34.0,
               ),
               onPressed: () {
-                 Get.to(() => Deteils());
+                 Get.to(() => ServiceDeteils());
               },
               // shape: RoundedRectangleBorder(
               //     borderRadius: BorderRadius.circular(20.0)),

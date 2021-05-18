@@ -13,16 +13,16 @@ class ServiceCentersController extends GetxController {
   ServiceCentersRepo scRepo = ServiceCentersRepo();
   int pagenum;
   String searchWord;
-  bool finish = false;
+  bool is_ThereNext = false;
   bool response = false;
   bool is_Searching = false;
   double containerWidth = 0;
   double containerheight = 0;
 
   ScrollController scrollController = ScrollController(
-    initialScrollOffset: 0.0,
-    keepScrollOffset: true,
-  );
+      // initialScrollOffset: 0.0,
+      // keepScrollOffset: true,
+      );
 
   TextEditingController searchController = TextEditingController();
 
@@ -30,7 +30,7 @@ class ServiceCentersController extends GetxController {
   void onInit() {
     super.onInit();
     pagenum = 1;
-    getAllServiceCenters();
+    // getAllServiceCenters();
 
     scrollController.addListener(() {
       if (scrollController.position.pixels ==
@@ -49,6 +49,12 @@ class ServiceCentersController extends GetxController {
     super.onClose();
   }
 
+  // @override
+  // void onReady() {
+  //   getAllServiceCenters();
+  //   super.onReady();
+  // }
+
   void getAllServiceCenters() async {
     scrollController.animateTo(
       0.0,
@@ -57,14 +63,12 @@ class ServiceCentersController extends GetxController {
     );
     pagenum = 1;
     is_Searching = false;
-    var rs = await scRepo.searchForServiceCenters(searchWord, pagenum);
+    var rs = await scRepo.getAllServiceCenters(pagenum);
     if (rs[0] == 1) {
       scModel = rs[1];
       response = true;
-      if (scModel.next) {
-        finish = false;
-      } else
-        finish = true;
+
+      is_ThereNext = scModel.next;
       update();
     } else if (rs[0] == 2) {
       Get.to(() => LoginPage());
@@ -72,20 +76,14 @@ class ServiceCentersController extends GetxController {
   }
 
   void getNextPage() async {
-    if (!finish) {
+    if (is_ThereNext) {
       pagenum++;
-      var rs = await scRepo.searchForServiceCenters(searchWord, pagenum);
+      var rs = await scRepo.getAllServiceCenters(pagenum);
       if (rs[0] == 1) {
         ServiceCentersModel temp = rs[1];
-        if (scModel.next) {
-          scModel.next = temp.next;
-          finish = false;
-          scModel.results.addAll(temp.results);
-          update();
-        } else {
-          finish = true;
-          print("finish");
-        }
+        is_ThereNext = temp.next;
+        scModel.results.addAll(temp.results);
+        update();
       } else if (rs[0] == 2) {
         Get.to(() => LoginPage());
       }
@@ -111,9 +109,9 @@ class ServiceCentersController extends GetxController {
         scModel = rs[1];
         response = true;
         if (scModel.next) {
-          finish = false;
+          is_ThereNext = true;
         } else
-          finish = true;
+          is_ThereNext = false;
         update();
       } else if (rs[0] == 2) {
         Get.to(() => LoginPage());
@@ -122,17 +120,13 @@ class ServiceCentersController extends GetxController {
   }
 
   void getNextSearchPage() async {
-    if (!finish) {
+    if (is_ThereNext) {
       pagenum++;
       var rs = await scRepo.searchForServiceCenters(searchWord, pagenum);
       if (rs[0] == 1) {
         ServiceCentersModel temp = rs[1];
 
-        if (scModel.next) {
-          scModel.next = temp.next;
-          finish = true;
-        } else
-          finish = false;
+        is_ThereNext = temp.next;
         scModel.results.addAll(temp.results);
         update();
       }

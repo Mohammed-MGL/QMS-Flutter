@@ -16,24 +16,21 @@ class SignupPage extends StatelessWidget {
   Widget _buildUsername() {
     return TextFormField(
       decoration: InputDecoration(
-                            border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(25.0),
-                            borderSide: new BorderSide(),
-                          ),
-                          enabledBorder:  OutlineInputBorder(
-                           borderRadius: new BorderRadius.circular(25.0),
-                            borderSide: const BorderSide(
-                            
-                              color: Colors.white,
-                            ), 
-                          ),
-                      
-                           //labelText: 'Last Name',
-                          hintText: "User Name",
-                          hintStyle:
-                              TextStyle(fontSize: 16, color: Colors.white),
-                         
-                        ),
+        border: new OutlineInputBorder(
+          borderRadius: new BorderRadius.circular(25.0),
+          borderSide: new BorderSide(),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: new BorderRadius.circular(25.0),
+          borderSide: const BorderSide(
+            color: Colors.white,
+          ),
+        ),
+
+        //labelText: 'Last Name',
+        hintText: "User Name",
+        hintStyle: TextStyle(fontSize: 16, color: Colors.white),
+      ),
       validator: (String value) {
         if (value.isEmpty) {
           return 'Username is Required';
@@ -47,30 +44,25 @@ class SignupPage extends StatelessWidget {
   }
 
   Widget _buildEmail() {
-    return  Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 4, vertical: 12),
-                      
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 12),
       child: TextFormField(
-      decoration: InputDecoration(
-                              border: new OutlineInputBorder(
-                              borderRadius: new BorderRadius.circular(25.0),
-                              borderSide: new BorderSide(),
-                            ),
-                            enabledBorder:  OutlineInputBorder(
-                             borderRadius: new BorderRadius.circular(25.0),
-                              borderSide: const BorderSide(
-                              
-                                color: Colors.white,
-                              ), 
-                            ),
-                        
-                             //labelText: 'Last Name',
-                            hintText: "Email",
-                            hintStyle:
-                                TextStyle(fontSize: 16, color: Colors.white),
-                           
-                          ),
+        decoration: InputDecoration(
+          border: new OutlineInputBorder(
+            borderRadius: new BorderRadius.circular(25.0),
+            borderSide: new BorderSide(),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: new BorderRadius.circular(25.0),
+            borderSide: const BorderSide(
+              color: Colors.white,
+            ),
+          ),
+
+          //labelText: 'Last Name',
+          hintText: "Email",
+          hintStyle: TextStyle(fontSize: 16, color: Colors.white),
+        ),
         validator: (String value) {
           if (value.isEmpty) {
             return 'Email is Required';
@@ -93,30 +85,25 @@ class SignupPage extends StatelessWidget {
 
   Widget _buildPassword() {
     return Padding(
-       
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 4, vertical: 12),
-                      child: TextFormField(
+      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 12),
+      child: TextFormField(
         controller: _pass,
-       decoration: InputDecoration(
-                              border: new OutlineInputBorder(
-                              borderRadius: new BorderRadius.circular(25.0),
-                              borderSide: new BorderSide(),
-                            ),
-                            enabledBorder:  OutlineInputBorder(
-                             borderRadius: new BorderRadius.circular(25.0),
-                              borderSide: const BorderSide(
-                              
-                                color: Colors.white,
-                              ), 
-                            ),
-                        
-                             //labelText: 'Last Name',
-                            hintText: "Password",
-                            hintStyle:
-                                TextStyle(fontSize: 16, color: Colors.white),
-                           
-                          ),
+        decoration: InputDecoration(
+          border: new OutlineInputBorder(
+            borderRadius: new BorderRadius.circular(25.0),
+            borderSide: new BorderSide(),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: new BorderRadius.circular(25.0),
+            borderSide: const BorderSide(
+              color: Colors.white,
+            ),
+          ),
+
+          //labelText: 'Last Name',
+          hintText: "Password",
+          hintStyle: TextStyle(fontSize: 16, color: Colors.white),
+        ),
         keyboardType: TextInputType.visiblePassword,
         validator: (String value) {
           if (value.isEmpty) {
@@ -134,28 +121,24 @@ class SignupPage extends StatelessWidget {
 
   Widget _buildPassword2() {
     return Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 4, vertical: 12),
-                      child: TextFormField(
+      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 12),
+      child: TextFormField(
         decoration: InputDecoration(
-                              border: new OutlineInputBorder(
-                              borderRadius: new BorderRadius.circular(25.0),
-                              borderSide: new BorderSide(),
-                            ),
-                            enabledBorder:  OutlineInputBorder(
-                             borderRadius: new BorderRadius.circular(25.0),
-                              borderSide: const BorderSide(
-                              
-                                color: Colors.white,
-                              ), 
-                            ),
-                        
-                             //labelText: 'Last Name',
-                            hintText: "Confirm Password",
-                            hintStyle:
-                                TextStyle(fontSize: 16, color: Colors.white),
-                           
-                          ),
+          border: new OutlineInputBorder(
+            borderRadius: new BorderRadius.circular(25.0),
+            borderSide: new BorderSide(),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: new BorderRadius.circular(25.0),
+            borderSide: const BorderSide(
+              color: Colors.white,
+            ),
+          ),
+
+          //labelText: 'Last Name',
+          hintText: "Confirm Password",
+          hintStyle: TextStyle(fontSize: 16, color: Colors.white),
+        ),
         keyboardType: TextInputType.visiblePassword,
         validator: (String value) {
           if (value.isEmpty) {
@@ -176,28 +159,24 @@ class SignupPage extends StatelessWidget {
 
   Widget _buildFirstName() {
     return Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 4, vertical: 12),
-                      child: TextFormField(
+      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 12),
+      child: TextFormField(
         decoration: InputDecoration(
-                              border: new OutlineInputBorder(
-                              borderRadius: new BorderRadius.circular(25.0),
-                              borderSide: new BorderSide(),
-                            ),
-                            enabledBorder:  OutlineInputBorder(
-                             borderRadius: new BorderRadius.circular(25.0),
-                              borderSide: const BorderSide(
-                              
-                                color: Colors.white,
-                              ), 
-                            ),
-                        
-                             //labelText: 'Last Name',
-                            hintText: "First Name",
-                            hintStyle:
-                                TextStyle(fontSize: 16, color: Colors.white),
-                           
-                          ),
+          border: new OutlineInputBorder(
+            borderRadius: new BorderRadius.circular(25.0),
+            borderSide: new BorderSide(),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: new BorderRadius.circular(25.0),
+            borderSide: const BorderSide(
+              color: Colors.white,
+            ),
+          ),
+
+          //labelText: 'Last Name',
+          hintText: "First Name",
+          hintStyle: TextStyle(fontSize: 16, color: Colors.white),
+        ),
         validator: (String value) {
           if (value.isEmpty) {
             return 'FirstName is Required';
@@ -215,24 +194,21 @@ class SignupPage extends StatelessWidget {
   Widget _buildLastName() {
     return TextFormField(
       decoration: InputDecoration(
-                            border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(25.0),
-                            borderSide: new BorderSide(),
-                          ),
-                          enabledBorder:  OutlineInputBorder(
-                           borderRadius: new BorderRadius.circular(25.0),
-                            borderSide: const BorderSide(
-                            
-                              color: Colors.white,
-                            ), 
-                          ),
-                      
-                           //labelText: 'Last Name',
-                          hintText: "Last Name",
-                          hintStyle:
-                              TextStyle(fontSize: 16, color: Colors.white),
-                         
-                        ),
+        border: new OutlineInputBorder(
+          borderRadius: new BorderRadius.circular(25.0),
+          borderSide: new BorderSide(),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: new BorderRadius.circular(25.0),
+          borderSide: const BorderSide(
+            color: Colors.white,
+          ),
+        ),
+
+        //labelText: 'Last Name',
+        hintText: "Last Name",
+        hintStyle: TextStyle(fontSize: 16, color: Colors.white),
+      ),
       validator: (String value) {
         if (value.isEmpty) {
           return 'LastName is Required';
@@ -331,8 +307,8 @@ class SignupPage extends StatelessWidget {
                     _buildPassword2(),
                     _buildFirstName(),
                     _buildLastName(),
-                      SizedBox(
-                       height: MediaQuery.of(context).size.width * 0.03,
+                    SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.03,
                     ),
                     RaisedButton(
                       padding: EdgeInsets.symmetric(

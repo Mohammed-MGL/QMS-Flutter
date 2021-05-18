@@ -4,7 +4,7 @@ import 'package:qms/Controllers/ServiceContoller.dart';
 import 'package:qms/pages/LoginPage.dart';
 //import 'package:qms/pages/deteilsService.dart';
 
-import 'DetailesService1.dart';
+import 'ServiceDeteils.dart';
 
 
 //import 'SignUp1.dart';
@@ -16,7 +16,6 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-       Get.find<ServiceController>().getServiceDetails(1);
 
     Size size = MediaQuery.of(context).size;
     return Stack(
@@ -65,7 +64,7 @@ class Welcome extends StatelessWidget {
                 horizontal: 34.0,
               ),
               onPressed: () {
-                 Get.to(() => Deteils());
+                 Get.to(() => ServiceDeteils());
               },
               // shape: RoundedRectangleBorder(
               //     borderRadius: BorderRadius.circular(20.0)),

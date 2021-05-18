@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qms/Controllers/AccountController.dart';
 import 'package:qms/Controllers/ServiceCentersController.dart';
+import 'package:qms/pages/SignupPage.dart';
 import 'ServiceCentersPage.dart';
 
 class LoginPage extends StatelessWidget {
@@ -11,6 +12,8 @@ class LoginPage extends StatelessWidget {
 
   String username;
   String password;
+
+  
 
   Widget _buildUsername() {
     return TextFormField(
@@ -60,8 +63,8 @@ class LoginPage extends StatelessWidget {
         hintText: "Password",
         hintStyle: TextStyle(fontSize: 16, color: Colors.white),
       ),
-      keyboardType: TextInputType.visiblePassword, 
-       obscureText: true,
+      keyboardType: TextInputType.visiblePassword,
+      obscureText: true,
       validator: (String value) {
         if (value.isEmpty) {
           return 'Password is Required';
@@ -83,8 +86,8 @@ class LoginPage extends StatelessWidget {
     _formKey.currentState.save();
     Get.find<AccountController>()
         .accountLogin(username: username, password: password);
-    Get.find<ServiceCentersController>().getAllServiceCenters();
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -97,134 +100,145 @@ class LoginPage extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         Scaffold(
-            backgroundColor: Colors.transparent,
-            appBar: AppBar(
-              title: Text('LOG IN',
-                  style: TextStyle(
-                    color: Colors.blue[700],
-                    fontFamily: 'DancingScript',
-                    fontSize: 28,
-                  )),
-              titleSpacing: 00.0,
-              centerTitle: true,
-              toolbarHeight: 60.2,
-              elevation: 10,
-              backgroundColor: Colors.white,
-            ),
-            body: SingleChildScrollView(
-              padding: const EdgeInsets.all(20.0),
-              child: Form(
-                key: _formKey,
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: MediaQuery.of(context).size.width * 0.1,
-                      ),
-                      Container(
-                        alignment: Alignment.center,
-                        //  width: MediaQuery.of(context).size.width,
-                        child: Text(
-                          'Welcome Back ',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 35,
-                            fontFamily: 'DancingScript',
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.width * 0.10,
-                      ),
-                      //styling
-                      // Image(
-                      //     image: AssetImage(
-                      //   'assets/images/login.jpg',
-                      // )),
-                      _buildUsername(),
-                      // TextFormField(
-                      //   decoration: InputDecoration(
-                      //       labelText: 'E-Mail',
-                      //       focusedBorder: OutlineInputBorder(
-                      //         borderSide: const BorderSide(
-                      //             color: Colors.deepPurple, width: 2.0),
-                      //         borderRadius: BorderRadius.circular(25.0),
-                      //       )),
-                      //   onFieldSubmitted: (value) {},
-                      //   obscureText: true,
-                      //   validator: (value) {
-                      //     if (value.isEmpty ||
-                      //         !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                      //             .hasMatch(value)) {
-                      //       return 'Enter a Valid E-Mail!';
-                      //     }
-                      //     return null;
-                      //   },
-                      // ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.width * 0.1,
-                      ),
-                      _buildPassword(),
-                      // TextFormField(
-                      //   decoration: InputDecoration(
-                      //       labelText: 'Password',
-                      //       focusedBorder: OutlineInputBorder(
-                      //         borderSide: const BorderSide(
-                      //             color: Colors.deepPurple, width: 2.0),
-                      //         borderRadius: BorderRadius.circular(25.0),
-                      //       )),
-                      //   onFieldSubmitted: (value) {},
-                      //   obscureText: true,
-                      //   validator: (value) {
-                      //     if (value.isEmpty) {
-                      //       return 'Enter a valid Password!';
-                      //     }
-                      //     return null;
-                      //   },
-                      // ),
-
-                      SizedBox(
-                        height: MediaQuery.of(context).size.width * 0.1,
-                      ),
-                      // ignore: deprecated_member_use
-                      Center(
-                        child: RaisedButton(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 8.0,
-                            horizontal: 15.0,
-                          ),
-                          child: Text(
-                            " Submit ",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.blue[700],
-                            ),
-                          ),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0)),
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            title: Text('LOG IN',
+                style: TextStyle(
+                  color: Colors.blue[700],
+                  fontFamily: 'DancingScript',
+                  fontSize: 28,
+                )),
+            titleSpacing: 00.0,
+            centerTitle: true,
+            toolbarHeight: 60.2,
+            elevation: 10,
+            backgroundColor: Colors.white,
+          ),
+          body: SingleChildScrollView(
+            padding: const EdgeInsets.all(20.0),
+            child: Form(
+              key: _formKey,
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.1,
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      //  width: MediaQuery.of(context).size.width,
+                      child: Text(
+                        'Welcome Back ',
+                        style: TextStyle(
                           color: Colors.white,
-                          onPressed: _submit,
+                          fontSize: 35,
+                          fontFamily: 'DancingScript',
                         ),
                       ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.width * 0.04,
-                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.10,
+                    ),
+                    //styling
+                    // Image(
+                    //     image: AssetImage(
+                    //   'assets/images/login.jpg',
+                    // )),
+                    _buildUsername(),
+                    // TextFormField(
+                    //   decoration: InputDecoration(
+                    //       labelText: 'E-Mail',
+                    //       focusedBorder: OutlineInputBorder(
+                    //         borderSide: const BorderSide(
+                    //             color: Colors.deepPurple, width: 2.0),
+                    //         borderRadius: BorderRadius.circular(25.0),
+                    //       )),
+                    //   onFieldSubmitted: (value) {},
+                    //   obscureText: true,
+                    //   validator: (value) {
+                    //     if (value.isEmpty ||
+                    //         !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                    //             .hasMatch(value)) {
+                    //       return 'Enter a Valid E-Mail!';
+                    //     }
+                    //     return null;
+                    //   },
+                    // ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.1,
+                    ),
+                    _buildPassword(),
+                    // TextFormField(
+                    //   decoration: InputDecoration(
+                    //       labelText: 'Password',
+                    //       focusedBorder: OutlineInputBorder(
+                    //         borderSide: const BorderSide(
+                    //             color: Colors.deepPurple, width: 2.0),
+                    //         borderRadius: BorderRadius.circular(25.0),
+                    //       )),
+                    //   onFieldSubmitted: (value) {},
+                    //   obscureText: true,
+                    //   validator: (value) {
+                    //     if (value.isEmpty) {
+                    //       return 'Enter a valid Password!';
+                    //     }
+                    //     return null;
+                    //   },
+                    // ),
 
-                      Center(
-                        child: InkWell(
-                          child: Text('Forget Password? ',
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 15.0)),
-                          onTap: () {},
+                    SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.1,
+                    ),
+                    // ignore: deprecated_member_use
+                    Center(
+                      child: RaisedButton(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 8.0,
+                          horizontal: 15.0,
                         ),
+                        child: Text(
+                          " Submit ",
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.blue[700],
+                          ),
+                        ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
+                        color: Colors.white,
+                        onPressed: _submit,
                       ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.04,
+                    ),
+
+                    Center(
+                      child: InkWell(
+                        child: Text('Forget Password? ',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 15.0)),
+                        onTap: () {},
+                      ),
+                    ),
+                    Center(
+                      child: InkWell(
+                        child: Text('Signup ? ',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 15.0)),
+                        onTap: () {
+                          Get.to(() => SignupPage());
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            )),
+            ),
+          ),
+        ),
       ],
     );
   }

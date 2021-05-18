@@ -125,13 +125,17 @@ class Services {
   int id;
   String name;
   bool iSActive;
+  Qdetails qdetails;
 
-  Services({this.id, this.name, this.iSActive});
+  Services({this.id, this.name, this.iSActive, this.qdetails});
 
   Services.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     iSActive = json['IS_Active'];
+    qdetails = json['Qdetails'] != null
+        ? new Qdetails.fromJson(json['Qdetails'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -139,6 +143,28 @@ class Services {
     data['id'] = this.id;
     data['name'] = this.name;
     data['IS_Active'] = this.iSActive;
+    if (this.qdetails != null) {
+      data['Qdetails'] = this.qdetails.toJson();
+    }
+    return data;
+  }
+}
+
+class Qdetails {
+  int customersNum;
+  String waitingtime;
+
+  Qdetails({this.customersNum, this.waitingtime});
+
+  Qdetails.fromJson(Map<String, dynamic> json) {
+    customersNum = json['customersNum'];
+    waitingtime = json['waitingtime'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['customersNum'] = this.customersNum;
+    data['waitingtime'] = this.waitingtime;
     return data;
   }
 }
