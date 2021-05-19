@@ -36,8 +36,8 @@ class ServiceDeteils extends StatelessWidget {
           //     name: 'name',
           //     queueCount: 5,
           //     waitingTime: "5 min");
-          bool isinq =true;
           final sInfo = controller.sInfo;
+          bool isinq = controller.sInfo.isInQ;
 
           return Center(
             child: Column(
@@ -105,9 +105,9 @@ class ServiceDeteils extends StatelessWidget {
                   //   crossAxisAlignment: CrossAxisAlignment.center,
                   //   children: [
                   //     RaisedButton(
-                        // padding: EdgeInsets.symmetric(
-                        //    vertical: 8.0,
-                        //   horizontal: 15.0,
+                  // padding: EdgeInsets.symmetric(
+                  //    vertical: 8.0,
+                  //   horizontal: 15.0,
                   //       ),
                   //       child: Text(
                   //         "Book Now ",
@@ -143,13 +143,14 @@ class ServiceDeteils extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.width * 0.2,
                 ),
-                Container( 
-                    decoration: BoxDecoration( color: Colors.blue[700].withOpacity(.20),
+                Container(
+                    decoration: BoxDecoration(
+                        color: Colors.blue[700].withOpacity(.20),
                         border: Border.all(
-                      color: Colors.blue[700],
-                    )),
+                          color: Colors.blue[700],
+                        )),
                     child: (isinq)
-                        ? Row( 
+                        ? Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               MaterialButton(
@@ -158,12 +159,12 @@ class ServiceDeteils extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     color: Colors.blue[700],
-                                    
                                   ),
                                 ),
                                 padding: EdgeInsets.symmetric(
-                           vertical: 6.0,
-                          horizontal: 6.0,),
+                                  vertical: 6.0,
+                                  horizontal: 6.0,
+                                ),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20.0)),
                                 color: Colors.white,
@@ -189,11 +190,9 @@ class ServiceDeteils extends StatelessWidget {
                                     color: Colors.blue[700],
                                   ),
                                 ),
-                                
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20.0)),
                                 color: Colors.white,
-                                
                                 onPressed: (isinq)
                                     ? () {
                                         controller.userInCenter(sInfo.id);

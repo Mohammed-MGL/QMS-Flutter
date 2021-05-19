@@ -6,7 +6,8 @@ class FavoritePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      appBar: AppBar(),
+      appBar: AppBar(        backgroundColor: Colors.blue[700],
+),
       body: Center(child: Text("Coming Soon...",style: TextStyle(fontSize: 25),)),
       bottomNavigationBar: MyNavictionBar(selectedItem: 1,),
       
