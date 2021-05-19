@@ -72,7 +72,7 @@ class ServiceCenterDetailsPage extends StatelessWidget {
                 ),
                 Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Row(
+                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Location : ${mySC.serviceCenter.location}",
                             style: TextStyle(
@@ -80,7 +80,8 @@ class ServiceCenterDetailsPage extends StatelessWidget {
                                 fontWeight: FontWeight.normal,
                                 fontSize: 16.0)),
                         IconButton(
-                            icon: Icon(Icons.map),
+                            icon: Icon(Icons.location_on_rounded),
+                            color: Colors.blue[700],
                             onPressed: () {
                               _launchURL(mySC.serviceCenter.mapLocations);
                             })
