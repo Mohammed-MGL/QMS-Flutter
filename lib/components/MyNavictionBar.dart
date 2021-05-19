@@ -19,7 +19,7 @@ class MyNavictionBar extends StatelessWidget {
       unselectedFontSize: 14,
       currentIndex: selectedItem,
       onTap: (index) {
-        Get.find<ReservationController>().getReservation();
+        
         Get.offAllNamed("page$index");
       },
       items: [

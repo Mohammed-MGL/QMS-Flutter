@@ -12,6 +12,7 @@ class Reservationpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.find<ReservationController>().getReservation();
     return Scaffold(
       bottomNavigationBar: MyNavictionBar(selectedItem: 2),
       appBar: AppBar(

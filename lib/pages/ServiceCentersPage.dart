@@ -11,7 +11,7 @@ import '../components/ServiceCenterCard.dart';
 class ServiceCentersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Get.find<ServiceCentersController>().getAllServiceCenters();
+    Get.find<ServiceCentersController>().cancelSearch();
 
     return Scaffold(
       resizeToAvoidBottomInset: false,

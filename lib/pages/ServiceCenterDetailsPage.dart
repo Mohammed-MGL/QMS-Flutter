@@ -5,14 +5,18 @@ import 'package:qms/Controllers/ServiceContoller.dart';
 import 'package:qms/Model/ServiceCenterDetailsModel.dart';
 import 'package:qms/components/MyNavictionBar.dart';
 import 'package:qms/components/ServiceCard.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ServiceCenterDetailsPage extends StatelessWidget {
   const ServiceCenterDetailsPage({Key key}) : super(key: key);
 
+  void _launchURL(String url) async =>
+      await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: MyNavictionBar(selectedItem : 1),
+      bottomNavigationBar: MyNavictionBar(selectedItem: 1),
       appBar: AppBar(
         //title: Text('Details Center', style: TextStyle(color: Colors.white)),
         // titleSpacing: 00.0,
@@ -36,6 +40,7 @@ class ServiceCenterDetailsPage extends StatelessWidget {
 
           return SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(
                   alignment: Alignment.bottomCenter,
@@ -44,6 +49,7 @@ class ServiceCenterDetailsPage extends StatelessWidget {
                       image: NetworkImage(
                         mySC.serviceCenter.image,
                       ),
+                      width: Get.width,
                     ),
                     Positioned(
                       child: CircleAvatar(
@@ -56,26 +62,32 @@ class ServiceCenterDetailsPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
-                  margin:
-                      EdgeInsets.only(top: 35.0, bottom: 20.0, right: 140.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Text("Name Center : ${mySC.serviceCenter.name}",
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.normal,
                           fontSize: 16.0)),
                 ),
-                Container(
-                  margin:
-                      EdgeInsets.only(top: 10.0, bottom: 20.0, right: 160.0),
-                  child: Text("Location : ${mySC.serviceCenter.location}",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.normal,
-                          fontSize: 16.0)),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 10.0, bottom: 8.0, right: 180.0),
+                Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Text("Location : ${mySC.serviceCenter.location}",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 16.0)),
+                        IconButton(
+                            icon: Icon(Icons.map),
+                            onPressed: () {
+                              _launchURL(mySC.serviceCenter.mapLocations);
+                            })
+                      ],
+                    )),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Text("Phone : ${mySC.serviceCenter.phone}",
                       style: TextStyle(
                           color: Colors.black,
