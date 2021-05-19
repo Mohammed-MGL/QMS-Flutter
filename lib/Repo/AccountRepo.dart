@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:qms/Model/userModel.dart';
+import 'package:qms/pages/LoginPage.dart';
 import 'dart:convert' as convert;
 
 import '../Model/ServiceCenterDetailsModel.dart';
@@ -9,7 +11,7 @@ import 'Storage.dart';
 class AccountRepo {
   Storage storage = Storage();
 
-  String baseUrl = "192.168.1.100:8000";
+  String baseUrl = "192.168.8.100:8000";
   // testurl = 'http://127.0.0.1:8000/API/Service_Center_detail/';
 
   Future<List> accountRegister({
@@ -106,7 +108,7 @@ class AccountRepo {
   }
 
   Future<bool> isLogin() async {
-    storage.deleteToken();
+    // storage.deleteToken();
 
     var t = await storage.readToken();
     print(t);
@@ -114,4 +116,6 @@ class AccountRepo {
 
     return true;
   }
+
+  
 }

@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class ServiceCentersRepo {
   Storage storage = Storage();
-  String baseUrl = "192.168.1.100:8000";
+  String baseUrl = "192.168.8.100:8000";
 
   Future<List> getAllServiceCenters(int pagenum) async {
     final urlExtention = '/API/allServiceCenter/';

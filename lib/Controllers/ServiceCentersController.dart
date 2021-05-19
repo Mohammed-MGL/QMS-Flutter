@@ -117,6 +117,8 @@ class ServiceCentersController extends GetxController {
         Get.to(() => LoginPage());
       }
     }
+    else
+    cancelSearch();
   }
 
   void getNextSearchPage() async {

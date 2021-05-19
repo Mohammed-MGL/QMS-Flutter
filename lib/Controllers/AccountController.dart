@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qms/Controllers/ServiceCentersController.dart';
 import 'package:qms/Repo/Storage.dart';
+import 'package:qms/pages/LoginPage.dart';
 import 'package:qms/pages/ServiceCentersPage.dart';
 
 // import '../Model/UserModel.dart';
@@ -61,7 +62,7 @@ class AccountController extends GetxController {
 
     if (res[0]) {
       Get.find<ServiceCentersController>().getAllServiceCenters();
-      Get.to(() => ServiceCentersPage());
+      Get.off(() => ServiceCentersPage());
     } else {
       Get.defaultDialog(
         title: "Error",
@@ -78,8 +79,10 @@ class AccountController extends GetxController {
     return false;
   }
 
-  void logout() {
-    Storage s = Storage();
-    s.deleteToken();
+  void logout() async {
+    await storage.deleteToken();
+    var t = await storage.readToken();
+    print(t);
+    Get.off(() => LoginPage());
   }
 }

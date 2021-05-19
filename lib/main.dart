@@ -15,6 +15,7 @@ import 'package:qms/pages/SignupPage.dart';
 import './pages/welcome1.dart';
 //import './pages/Login1.dart';
 import 'dependencies.dart';
+import 'pages/AccountPage.dart';
 import 'pages/ServiceCenterDetailsPage.dart';
 
 Future<void> main() async {
@@ -38,7 +39,7 @@ Future<void> main() async {
         GetPage(name: 'page1', page: () => FavoritePage()),
         GetPage(name: 'page2', page: () => Reservationpage()),
         GetPage(name: "page3", page: () => FavoritePage()),
-        GetPage(name: 'page4', page: () => FavoritePage()),
+        GetPage(name: 'page4', page: () => AccountPage()),
         
       ],
   ));

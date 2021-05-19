@@ -37,8 +37,7 @@ class ServiceDeteils extends StatelessWidget {
           //     queueCount: 5,
           //     waitingTime: "5 min");
           bool isinq =true;
-           final sInfo = controller.sInfo;
-          //final sInfo =ServiceModel();
+          final sInfo = controller.sInfo;
 
           return Center(
             child: Column(

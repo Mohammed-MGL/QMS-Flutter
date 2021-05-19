@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../Controllers/ServiceCentersController.dart';
 import 'package:get/get.dart';
 
@@ -12,14 +13,21 @@ class ServiceCentersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      bottomNavigationBar: MyNavictionBar(selectedItem: 0,),
+      bottomNavigationBar: MyNavictionBar(
+        selectedItem: 0,
+      ),
       appBar: AppBar(
-        title: Text('Services Center', style: TextStyle(color: Colors.white,  fontFamily: 'DancingScript', fontSize: 28,)),
+        title: Text('Services Center',
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'DancingScript',
+              fontSize: 28,
+            )),
         titleSpacing: 00.0,
         centerTitle: true,
         toolbarHeight: 60.2,
         elevation: 10,
-        backgroundColor:Colors.blue[700],
+        backgroundColor: Colors.blue[700],
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.notifications_active),
@@ -42,13 +50,17 @@ class ServiceCentersPage extends StatelessWidget {
                   IconButton(
                       icon: Icon(
                         Icons.qr_code_scanner_rounded,
-                        color:Colors.blue[700],
+                        color: Colors.blue[700],
                       ),
                       onPressed: () {
                         Get.to(() => QrPage(), transition: Transition.fadeIn);
                       }),
                   Expanded(
                     child: TextFormField(
+                      textInputAction: TextInputAction.search,
+                      onFieldSubmitted: (_) {
+                        scController.searchForServiceCenters();
+                      },
                       controller: scController.searchController,
                       style: TextStyle(
                           fontSize: 14.0, height: 1.0, color: Colors.black),
