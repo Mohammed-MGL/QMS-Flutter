@@ -28,7 +28,6 @@ Future<void> main() async {
   AccountController account = AccountController();
   bool t = await account.isLogin();
   if (t) {
-    Get.find<ServiceCentersController>().getAllServiceCenters();
     _defaultHome = ServiceCentersPage();
   }
   runApp(GetMaterialApp(

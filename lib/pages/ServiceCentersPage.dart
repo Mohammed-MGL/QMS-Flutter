@@ -11,6 +11,8 @@ import '../components/ServiceCenterCard.dart';
 class ServiceCentersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Get.find<ServiceCentersController>().getAllServiceCenters();
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: MyNavictionBar(
