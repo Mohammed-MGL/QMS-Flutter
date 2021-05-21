@@ -223,6 +223,8 @@ class LoginPage extends StatelessWidget {
                         onTap: () {},
                       ),
                     ),
+                     SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.04),
                     Center(
                       child: InkWell(
                         child: Text('Signup ? ',
