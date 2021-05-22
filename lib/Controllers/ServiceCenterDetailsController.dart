@@ -16,7 +16,7 @@ class ServiceCenterDetailsController extends GetxController {
       update();
     }
     else if (rs[0] == 1){
-       Get.to(() => LoginPage());
+       Get.off(() => LoginPage());
     }
   }
 

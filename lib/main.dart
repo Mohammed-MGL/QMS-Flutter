@@ -7,6 +7,7 @@ import 'package:qms/Repo/AccountRepo.dart';
 import 'package:qms/Repo/Storage.dart';
 import 'package:qms/pages/FavoritePage.dart';
 import 'package:qms/pages/HistoryPage.dart';
+import 'package:qms/pages/Profile.dart';
 import 'package:qms/pages/Reservationpage.dart';
 import 'package:qms/pages/ServiceCentersPage.dart';
 import 'package:qms/pages/LoginPage.dart';
@@ -41,7 +42,7 @@ Future<void> main() async {
       GetPage(name: 'page1', page: () => FavoritePage()),
       GetPage(name: 'page2', page: () => Reservationpage()),
       GetPage(name: "page3", page: () => History()),
-      GetPage(name: 'page4', page: () => AccountPage()),
+      GetPage(name: 'page4', page: () => ProfileUser()),
     ],
   ));
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qms/Controllers/ServiceCentersController.dart';
+import 'package:qms/Model/UserModel.dart';
 import 'package:qms/Repo/Storage.dart';
 import 'package:qms/pages/LoginPage.dart';
 import 'package:qms/pages/ServiceCentersPage.dart';
@@ -13,6 +14,7 @@ class AccountController extends GetxController {
   // ServiceCenterDetailsModel scdInfo = ServiceCenterDetailsModel();
 
   Storage storage = Storage();
+  UserModel userModel = UserModel();
 
   AccountRepo accountRepo = AccountRepo();
 
@@ -34,7 +36,7 @@ class AccountController extends GetxController {
 
     if (res[0]) {
       print("UserModel u = res[1];");
-      Get.to(() => ServiceCentersPage());
+      Get.off(() => ServiceCentersPage());
     } else {
       Map<String, dynamic> responseMap = res[1];
 
@@ -84,5 +86,16 @@ class AccountController extends GetxController {
     var t = await storage.readToken();
     print(t);
     Get.off(() => LoginPage());
+  }
+
+  void getUserInfo() async {
+    var us = await accountRepo.getUserInfo();
+    if (us[0] == 1) {
+     userModel  = us[1];
+
+      update();
+    } else if (us[0] == 1) {
+      Get.off(() => LoginPage());
+    }
   }
 }

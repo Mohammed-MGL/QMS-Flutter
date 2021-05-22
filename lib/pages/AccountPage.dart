@@ -18,7 +18,7 @@ class AccountPage extends StatelessWidget {
           },
         ),
       ),
-      bottomNavigationBar: MyNavictionBar(selectedItem: 4),
+      //bottomNavigationBar: MyNavictionBar(selectedItem: 4),
     );
   }
 }
