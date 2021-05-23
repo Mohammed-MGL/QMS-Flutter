@@ -125,7 +125,7 @@ class ProfileUser extends StatelessWidget {
                                   horizontal: 20.0,
                                 ),
                                 child: Text(
-                                  "Log up",
+                                  "Log Out",
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     color: Colors.blue[700],
