@@ -29,7 +29,7 @@ class ReservationController extends GetxController {
     scrollController.addListener(() {
       if (scrollController.position.pixels ==
           scrollController.position.maxScrollExtent) {
-        getReservation();
+        getNextPage();
       }
     });
   }
@@ -56,4 +56,20 @@ class ReservationController extends GetxController {
       Get.to(() => LoginPage());
     }
   }
+
+  void getNextPage() async {
+    if (is_ThereNext) {
+      pagenum++;
+      var rs = await reservRepo.getReservation(pagenum);
+      if (rs[0] == 1) {
+        ReservationModel temp = rs[1];
+        is_ThereNext = temp.next;
+        reservInfo.results.addAll(temp.results);
+        update();
+      } else if (rs[0] == 2) {
+        Get.to(() => LoginPage());
+      }
+    }
+  }
+
 }

@@ -7,8 +7,8 @@ import 'package:qms/Model/ServiceCenterDetailsModel.dart';
 import 'package:qms/components/MyNavictionBar.dart';
 import 'package:qms/components/ServiceCard.dart';
 
-class Reservationpage extends StatelessWidget {
-  const Reservationpage({Key key}) : super(key: key);
+class ReservationPage extends StatelessWidget {
+  const ReservationPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
