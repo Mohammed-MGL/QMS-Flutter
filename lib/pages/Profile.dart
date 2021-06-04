@@ -38,7 +38,7 @@ class ProfileUser extends StatelessWidget {
            children: [
              Padding(
                padding: const EdgeInsets.only(top:20) ,
-               child: Container(child: Text(" Your ID : ${mypro.username}", style: TextStyle(
+               child: Container(child: Text(" Your ID : ${mypro.id}", style: TextStyle(
                           fontSize: 26.0,  fontWeight: FontWeight.bold,
                          color: Colors.blue[700],),),),
              ),
