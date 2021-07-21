@@ -38,11 +38,11 @@ Future<void> main() async {
     debugShowCheckedModeBanner: false,
     home: _defaultHome,
     getPages: [
-      GetPage(name: 'page0', page: () => ServiceCentersPage()),
-      GetPage(name: 'page1', page: () => FavoritePage()),
-      GetPage(name: 'page2', page: () => ReservationPage()),
-      GetPage(name: "page3", page: () => HistoryPage()),
-      GetPage(name: 'page4', page: () => ProfileUser()),
+      GetPage(name: 'page0', page: () => ServiceCentersPage(),transition: Transition.noTransition),
+      GetPage(name: 'page1', page: () => FavoritePage(),transition: Transition.noTransition),
+      GetPage(name: 'page2', page: () => ReservationPage(),transition: Transition.noTransition),
+      GetPage(name: "page3", page: () => HistoryPage(),transition: Transition.noTransition),
+      GetPage(name: 'page4', page: () => ProfileUser(),transition: Transition.noTransition),
     ],
   ));
 }
