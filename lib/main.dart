@@ -34,7 +34,8 @@ Future<void> main() async {
   }
   runApp(GetMaterialApp(
      translations:Translation(),
-      locale: Get.deviceLocale,
+      //locale: Get.deviceLocale,
+      locale :Translation.locale,
       fallbackLocale: Translation.fallbackLocale,
       
     smartManagement: SmartManagement.keepFactory,
