@@ -4,7 +4,7 @@ import 'package:qms/Controllers/AccountController.dart';
 import 'package:qms/Controllers/ServiceCentersController.dart';
 import 'package:qms/pages/SignupPage.dart';
 import 'ServiceCentersPage.dart';
-
+import 'package:qms/Translation.dart';
 class LoginPage extends StatelessWidget {
   LoginPage({Key key}) : super(key: key);
   var _formKey = GlobalKey<FormState>();
@@ -12,8 +12,7 @@ class LoginPage extends StatelessWidget {
 
   String username;
   String password;
-
-  
+ String _selectedLang =Translation.langs.first;
 
   Widget _buildUsername() {
     return TextFormField(
@@ -30,12 +29,12 @@ class LoginPage extends StatelessWidget {
         ),
 
         //labelText: 'Last Name',
-        hintText: "User Name",
+        hintText: "User Name".tr,
         hintStyle: TextStyle(fontSize: 16, color: Colors.white),
       ),
       validator: (String value) {
         if (value.isEmpty) {
-          return 'Username is Required';
+          return 'Username is Required'.tr;
         }
         return null;
       },
@@ -60,14 +59,14 @@ class LoginPage extends StatelessWidget {
         ),
 
         //labelText: 'Last Name',
-        hintText: "Password",
+        hintText: "Password".tr,
         hintStyle: TextStyle(fontSize: 16, color: Colors.white),
       ),
       keyboardType: TextInputType.visiblePassword,
       obscureText: true,
       validator: (String value) {
         if (value.isEmpty) {
-          return 'Password is Required';
+          return 'Password is Required'.tr;
         }
 
         return null;
@@ -87,7 +86,6 @@ class LoginPage extends StatelessWidget {
     Get.find<AccountController>()
         .accountLogin(username: username, password: password);
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +100,7 @@ class LoginPage extends StatelessWidget {
         Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            title: Text('LOG IN',
+            title: Text('LOG IN'.tr,
                 style: TextStyle(
                   color: Colors.blue[700],
                   fontFamily: 'DancingScript',
@@ -130,7 +128,7 @@ class LoginPage extends StatelessWidget {
                       alignment: Alignment.center,
                       //  width: MediaQuery.of(context).size.width,
                       child: Text(
-                        'Welcome Back ',
+                        'Welcome Back '.tr,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 35,
@@ -199,7 +197,7 @@ class LoginPage extends StatelessWidget {
                           horizontal: 15.0,
                         ),
                         child: Text(
-                          " Submit ",
+                          " Submit ".tr,
                           style: TextStyle(
                             fontSize: 20.0,
                             color: Colors.blue[700],
@@ -217,17 +215,16 @@ class LoginPage extends StatelessWidget {
 
                     Center(
                       child: InkWell(
-                        child: Text('Forget Password? ',
+                        child: Text('Forget Password? '.tr,
                             style:
                                 TextStyle(color: Colors.white, fontSize: 15.0)),
                         onTap: () {},
                       ),
                     ),
-                     SizedBox(
-                      height: MediaQuery.of(context).size.width * 0.04),
+                    SizedBox(height: MediaQuery.of(context).size.width * 0.04),
                     Center(
                       child: InkWell(
-                        child: Text('Signup ? ',
+                        child: Text('Signup ? '.tr,
                             style:
                                 TextStyle(color: Colors.white, fontSize: 15.0)),
                         onTap: () {
@@ -235,6 +232,18 @@ class LoginPage extends StatelessWidget {
                         },
                       ),
                     ),
+                      DropdownButton(
+              icon: Icon(Icons.arrow_drop_down),
+              value: _selectedLang,
+              items: Translation.langs.map((String lang) {
+                return DropdownMenuItem(value: lang, child: Text(lang));
+              }).toList(),
+              onChanged: (String value) {
+                // updates dropdown selected value
+               // setState(() => _selectedLang = value);
+                // gets language and changes the locale
+                Translation().changeLocale(value);
+              },),
                   ],
                 ),
               ),

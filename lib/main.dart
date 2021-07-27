@@ -13,7 +13,7 @@ import 'package:qms/pages/ServiceCentersPage.dart';
 import 'package:qms/pages/LoginPage.dart';
 import 'package:qms/pages/ServiceDeteils.dart';
 import 'package:qms/pages/SignupPage.dart';
-
+import 'package:qms/Translation.dart';
 // import './pages/home.dart';
 // import './pages/login.dart';
 import './pages/welcome1.dart';
@@ -33,6 +33,10 @@ Future<void> main() async {
     _defaultHome = ServiceCentersPage();
   }
   runApp(GetMaterialApp(
+     translations:Translation(),
+      locale: Get.deviceLocale,
+      fallbackLocale: Translation.fallbackLocale,
+      
     smartManagement: SmartManagement.keepFactory,
     initialBinding: Dependencies(),
     debugShowCheckedModeBanner: false,
