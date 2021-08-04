@@ -19,11 +19,16 @@ import 'package:qms/Translation.dart';
 import './pages/welcome1.dart';
 //import './pages/Login1.dart';
 import 'dependencies.dart';
+import 'firebase/cloud_messaging/messaging_service.dart';
 import 'pages/AccountPage.dart';
 import 'pages/ServiceCenterDetailsPage.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await MessagingService().initMessaging();
+
 
   Widget _defaultHome = LoginPage();
 
@@ -33,21 +38,22 @@ Future<void> main() async {
     _defaultHome = ServiceCentersPage();
   }
   runApp(GetMaterialApp(
-     translations:Translation(),
+     
       //locale: Get.deviceLocale,
       locale :Translation.locale,
       fallbackLocale: Translation.fallbackLocale,
+      translations:Translation(),
       
     smartManagement: SmartManagement.keepFactory,
     initialBinding: Dependencies(),
     debugShowCheckedModeBanner: false,
     home: _defaultHome,
-    getPages: [
-      GetPage(name: 'page0', page: () => ServiceCentersPage(),transition: Transition.noTransition),
-      GetPage(name: 'page1', page: () => FavoritePage(),transition: Transition.noTransition),
-      GetPage(name: 'page2', page: () => ReservationPage(),transition: Transition.noTransition),
-      GetPage(name: "page3", page: () => HistoryPage(),transition: Transition.noTransition),
-      GetPage(name: 'page4', page: () => ProfileUser(),transition: Transition.noTransition),
-    ],
+    // getPages: [
+    //   GetPage(name: 'page0', page: () => ServiceCentersPage(),transition: Transition.noTransition),
+    //   GetPage(name: 'page1', page: () => FavoritePage(),transition: Transition.noTransition),
+    //   GetPage(name: 'page2', page: () => ReservationPage(),transition: Transition.noTransition),
+    //   GetPage(name: "page3", page: () => HistoryPage(),transition: Transition.noTransition),
+    //   GetPage(name: 'page4', page: () => ProfileUser(),transition: Transition.noTransition),
+    // ],
   ));
 }

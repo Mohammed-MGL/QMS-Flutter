@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class ServiceCentersRepo {
   Storage storage = Storage();
-  String baseUrl = "192.168.243.191:8000";
+  String baseUrl = "192.168.43.247:8000";
 
   Future<List> getAllServiceCenters(int pagenum) async {
     final urlExtention = '/API/allServiceCenter/';
@@ -19,6 +19,7 @@ class ServiceCentersRepo {
         'Authorization': 'Bearer $token',
       },
     );
+    
     if (response.statusCode == 200) {
       ServiceCentersModel rs =
           ServiceCentersModel.fromJson(convert.jsonDecode(response.body));

@@ -30,7 +30,7 @@ class ReservationPage extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.only(top: 10.0, bottom: 8.0, left: 15.0),
-                  child: Text("My Reservation:",
+                  child: Text("My Reservation:".tr,
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.normal,

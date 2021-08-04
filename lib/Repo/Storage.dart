@@ -16,7 +16,18 @@ class Storage {
     await storage.delete(key: "token");
   }
 
+  Future<void> saveFCMToken(String token) async {
+    await storage.write(key: "FCMtoken", value: token);
+  }
 
+  Future<String> readFCMToken() async {
+    var res = await storage.read(key: "FCMtoken");
+    return res;
+  }
+
+  Future<void> deleteFCMToken() async {
+    await storage.delete(key: "FCMtoken");
+  }
 
 // // Read value
 //   String value = await storage.read(key: key);

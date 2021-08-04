@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -11,7 +13,7 @@ import 'Storage.dart';
 class AccountRepo {
   Storage storage = Storage();
 
-  String baseUrl = "192.168.243.191:8000";
+  String baseUrl = "192.168.43.247:8000";
   // testurl = 'http://127.0.0.1:8000/API/Service_Center_detail/';
 
   Future<List> accountRegister({
@@ -118,7 +120,7 @@ class AccountRepo {
   }
 
   Future<List> getUserInfo() async {
-     String baseUrl = "192.168.243.191:8000";
+    String baseUrl = "192.168.43.247:8000";
     final urlExtention = '/API/account/profile/';
     String token = await storage.readToken();
 
@@ -131,8 +133,7 @@ class AccountRepo {
       },
     );
     if (response.statusCode == 200) {
-      UserModel rs =
-          UserModel.fromJson(convert.jsonDecode(response.body));
+      UserModel rs = UserModel.fromJson(convert.jsonDecode(response.body));
       dynamic returnList = [1, rs];
 
       return returnList;
@@ -143,4 +144,63 @@ class AccountRepo {
       return returnList;
     }
   }
+
+  Future<Void> sendFCMtoken() async {
+    String baseUrl = "192.168.43.247:8000";
+    final urlExtention = '/API/account/register/FCMtoken/';
+    String token = await storage.readToken();
+    String fCMtoken = await storage.readFCMToken();
+    final response = await http.post(
+      (Uri.http(
+        baseUrl,
+        urlExtention,
+      )),
+      headers: <String, String>{
+        "Accept": "application/json",
+        "Content-Type": "application/json; charset=UTF-8",
+        'Authorization': 'Bearer $token',
+        
+      },
+      body: convert.jsonEncode(<String, String>{
+        'registration_id': fCMtoken,
+        'type': 'android',
+        
+      }),
+       
+      // body: convert.jsonEncode(<String, String>{
+      //   "registration_id": fCMtoken,
+      //    "type": "android"
+      //   }),
+    );
+    print("response.body");
+    var t = convert.jsonEncode(<String, String>{
+        'registration_id': fCMtoken,
+        'type': 'android'});
+    print(t);
+    
+    print(response.body);
+  }
+  // 201 OK 400
+
+  // if (response.statusCode == 201) {
+
+  // print("OK");
+
+  //   dynamic returnList = [true, token];
+  //   return returnList;
+  // } else if (response.statusCode == 401) {
+  //   String errorMsg = "username and password do not match!";
+
+  //   dynamic returnList = [false, errorMsg];
+  //   return returnList;
+  // } else {
+  //   print(response.statusCode);
+  //   Map<String, dynamic> responseMap = (convert.jsonDecode(response.body));
+  //   print(responseMap);
+  //   responseMap.forEach((k, v) => print('$k: $v'));
+  //   String errorMsg = "error something went wrong";
+  //   dynamic returnList = [false, errorMsg];
+  //   return returnList;
+  // }
+  // }
 }

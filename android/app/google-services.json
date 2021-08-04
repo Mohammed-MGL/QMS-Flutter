@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "649860896590",
+    "project_id": "qmss-f3278",
+    "storage_bucket": "qmss-f3278.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649860896590:android:aef3dd3482626d14c6701f",
+        "android_client_info": {
+          "package_name": "com.example.qms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "649860896590-i2lkm8dluupoagf824tmsqcm5v2h53r1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl65nIFMFYgvPLdAoA3XnlqrMbViJX_HU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "649860896590-i2lkm8dluupoagf824tmsqcm5v2h53r1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

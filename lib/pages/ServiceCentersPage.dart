@@ -7,6 +7,7 @@ import 'QrPage.dart';
 import '../components/MyNavictionBar.dart';
 import '../components/NetWorkError.dart';
 import '../components/ServiceCenterCard.dart';
+import 'package:qms/Translation.dart';
 
 class ServiceCentersPage extends StatelessWidget {
   @override
@@ -19,7 +20,7 @@ class ServiceCentersPage extends StatelessWidget {
         selectedItem: 0,
       ),
       appBar: AppBar(
-        title: Text('Services Center',
+        title: Text('Services Center'.tr,
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'DancingScript',
@@ -30,20 +31,21 @@ class ServiceCentersPage extends StatelessWidget {
         toolbarHeight: 60.2,
         elevation: 10,
         backgroundColor: Colors.blue[700],
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.notifications_active),
-            onPressed: () {},
-          ),
-          // IconButton(
-          //   icon: Icon(Icons.settings),
-          //   onPressed: () {},
-          // )
-        ],
+        // actions: <Widget>[
+        //   IconButton(
+        //     icon: Icon(Icons.notifications_active),
+        //     onPressed: () {},
+        //   ),
+        //   // IconButton(
+        //   //   icon: Icon(Icons.settings),
+        //   //   onPressed: () {},
+        //   // )
+        // ],
       ),
       body: GetBuilder<ServiceCentersController>(builder: (scController) {
         return Column(
           children: [
+            
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Row(
@@ -67,7 +69,7 @@ class ServiceCentersPage extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 14.0, height: 1.0, color: Colors.black),
                       decoration: InputDecoration(
-                        labelText: "Let's search to service center",
+                        labelText: "Let's search to service center".tr,
                         suffixIcon: IconButton(
                           icon: Icon(
                             Icons.search,
@@ -103,7 +105,8 @@ class ServiceCentersPage extends StatelessWidget {
                             }
                             return ServiceCenterCard(
                               serviceCenter:
-                                  scController.scModel.results[index],
+
+scController.scModel.results[index],
                               pressedOn: () => scController.selectServiceCenter(
                                   scController.scModel.results[index].id),
                             );
@@ -111,7 +114,7 @@ class ServiceCentersPage extends StatelessWidget {
                         ),
                       ),
                     if (scController.scModel.results.length == 0)
-                      Text("results not found"),
+                      Text("results not found".tr),
                   ],
                 ),
               ),
@@ -150,7 +153,9 @@ class ServiceCentersPage extends StatelessWidget {
             if (!scController.response)
               NetWorkError(
                   buttonHandler: scController.retryGetingServiceCenters)
+                  
           ],
+          
         );
       }),
     );

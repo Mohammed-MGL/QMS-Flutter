@@ -65,6 +65,7 @@ class AccountController extends GetxController {
     if (res[0]) {
       Get.find<ServiceCentersController>().getAllServiceCenters();
       Get.off(() => ServiceCentersPage());
+      await accountRepo.sendFCMtoken();
     } else {
       Get.defaultDialog(
         title: "Error",

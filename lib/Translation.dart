@@ -1,23 +1,14 @@
 import 'package:get/get.dart';
-import 'package:qms/components/Lang/ar.dart';
+
 import 'package:qms/components/Lang/en.dart';
 import 'dart:ui';
 
+import 'package:qms/components/lang/ar.dart';
+
 //import 'package:qms/components/lang/ar.dart';
 
- class Translation  extends Translations{
-  //static Map<String, Map<String, String>> translationsKeys = {
-    //"en_US":  enUS,
-    //"ar": ar,
-   
-  //};
-
-  //@override
-  // TODO: implement keys
-  //
-  //Map<String, Map<String, String>> get keys => throw UnimplementedError();
-//}
-  // Default locale
+class Translation extends Translations {
+   // Default locale
   static final locale = Locale('en', 'US');
 
   // fallbackLocale saves the day when the locale gets in trouble
@@ -28,23 +19,24 @@ import 'dart:ui';
   static final langs = [
     'English',
     'Arabic',
-  
+    
   ];
 
   // Supported locales
   // Needs to be same order with langs
   static final locales = [
     Locale('en', 'US'),
-    Locale('Ar', ''),
+    Locale('ar', 'SA'),
     
   ];
 
   // Keys and their translations
-  // Translations are separated maps in `lang` file
+  // Translations are separated maps in lang file
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': enUS,
-        'AR':ar,
+        'ar_SA': ar,
+        
       };
 
   // Gets locale from language, and updates the locale
@@ -53,7 +45,7 @@ import 'dart:ui';
     Get.updateLocale(locale);
   }
 
-  // Finds language in `langs` list and returns it as Locale
+  // Finds language in langs list and returns it as Locale
   Locale _getLocaleFromLanguage(String lang) {
     for (int i = 0; i < langs.length; i++) {
       if (lang == langs[i]) return locales[i];

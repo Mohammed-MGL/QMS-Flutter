@@ -8,7 +8,7 @@ import 'package:qms/Repo/Storage.dart';
 
 class HistoryRepo {
   Storage storage = Storage();
-  String baseUrl = "192.168.243.191:8000";
+  String baseUrl = "192.168.43.247:8000";
 
   Future<List> getHistory(int pagenum) async {
     final urlExtention = '/API/UserHistory/';
