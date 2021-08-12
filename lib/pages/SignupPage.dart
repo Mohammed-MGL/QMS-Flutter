@@ -251,7 +251,7 @@ class SignupPage extends StatelessWidget {
     return Stack(
       children: <Widget>[
         Image.asset(
-          'assets/images/g.jpg',
+          'assets/images/b.jpg',
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           fit: BoxFit.cover,
@@ -261,7 +261,7 @@ class SignupPage extends StatelessWidget {
           appBar: AppBar(
             title: Text('Sign Up',
                 style: TextStyle(
-                  color: Colors.blue[700],
+                  color: Theme.of(context).accentColor,
                   fontFamily: 'DancingScript',
                   fontSize: 28,
                 )),
@@ -299,10 +299,7 @@ class SignupPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image(
-                          image: AssetImage(
-                        'lib/images/login.jpg',
-                      )),
+                     
                       _buildUsername(),
                       _buildEmail(),
                       _buildPassword(),
@@ -321,7 +318,7 @@ class SignupPage extends StatelessWidget {
                           " Submit ",
                           style: TextStyle(
                             fontSize: 20.0,
-                            color: Colors.blue[700],
+                            color:Theme.of(context).accentColor,
                           ),
                         ),
                         shape: RoundedRectangleBorder(

@@ -19,7 +19,7 @@ class MyNavictionBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      backgroundColor: Colors.blue[700],
+      backgroundColor: Theme.of(context).primaryColor,
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.white.withOpacity(.60),
       selectedFontSize: 14,

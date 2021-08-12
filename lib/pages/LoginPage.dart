@@ -92,7 +92,7 @@ class LoginPage extends StatelessWidget {
     return Stack(
       children: <Widget>[
         Image.asset(
-          'assets/images/g.jpg',
+          'assets/images/b.jpg',
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           fit: BoxFit.cover,
@@ -102,7 +102,7 @@ class LoginPage extends StatelessWidget {
           appBar: AppBar(
             title: Text('LOG IN'.tr,
                 style: TextStyle(
-                  color: Colors.blue[700],
+                  color:  Theme.of(context).primaryColor,
                   fontFamily: 'DancingScript',
                   fontSize: 28,
                 )),
@@ -200,7 +200,7 @@ class LoginPage extends StatelessWidget {
                           " Submit ".tr,
                           style: TextStyle(
                             fontSize: 20.0,
-                            color: Colors.blue[700],
+                            color:  Theme.of(context).primaryColor,
                           ),
                         ),
                         shape: RoundedRectangleBorder(

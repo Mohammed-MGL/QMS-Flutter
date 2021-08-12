@@ -17,9 +17,9 @@ class ProfileUser extends StatelessWidget {
       appBar: AppBar(
         title: Text('Profile'.tr,
             style: TextStyle(
-              color: Colors.blue[700],
-              //fontFamily: 'DancingScript',
-              fontSize: 28,
+              color: Theme.of(context).primaryColor,
+              fontFamily: 'DancingScript',
+              fontSize: 35,
             )),
         titleSpacing: 00.0,
         centerTitle: true,
@@ -29,7 +29,7 @@ class ProfileUser extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.edit),
-            color: Colors.blue[700],
+            color: Theme.of(context).accentColor,
             onPressed: () {},
           ),
         ],
@@ -47,7 +47,7 @@ class ProfileUser extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 26.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.blue[700],
+                      color: Theme.of(context).accentColor,
                     ),
                   ),
                 ),
@@ -63,7 +63,7 @@ class ProfileUser extends StatelessWidget {
                   leading: Icon(Icons.person),
                   title: Text(
                     'UserName'.tr,
-                    style: TextStyle(color: Colors.blue[700]),
+                    style: TextStyle(color: Theme.of(context).accentColor),
                   ),
                   subtitle: Text(" ${mypro.username}"),
                 ),
@@ -76,7 +76,7 @@ class ProfileUser extends StatelessWidget {
                   leading: Icon(Icons.person),
                   title: Text(
                     'First Name'.tr,
-                    style: TextStyle(color: Colors.blue[700]),
+                    style: TextStyle(color: Theme.of(context).accentColor),
                   ),
                   subtitle: Text(
                     " ${mypro.firstName}",
@@ -91,7 +91,7 @@ class ProfileUser extends StatelessWidget {
                   leading: Icon(Icons.person),
                   title: Text(
                     'Last Name'.tr,
-                    style: TextStyle(color: Colors.blue[700]),
+                    style: TextStyle(color: Theme.of(context).accentColor),
                   ),
                   subtitle: Text(" ${mypro.lastName}"),
                 ),
@@ -104,7 +104,7 @@ class ProfileUser extends StatelessWidget {
                   leading: Icon(Icons.email_rounded),
                   title: Text(
                     'Email'.tr,
-                    style: TextStyle(color: Colors.blue[700]),
+                    style: TextStyle(color: Theme.of(context).accentColor),
                   ),
                   subtitle: Text(" ${mypro.email}"),
                 ),
@@ -125,7 +125,7 @@ class ProfileUser extends StatelessWidget {
                             "Edit Password".tr,
                             style: TextStyle(
                               fontSize: 20.0,
-                              color: Colors.blue[700],
+                              color: Theme.of(context).accentColor,
                             ),
                           ),
                           padding: EdgeInsets.symmetric(
@@ -149,7 +149,7 @@ class ProfileUser extends StatelessWidget {
                             "Log Out".tr,
                             style: TextStyle(
                               fontSize: 20.0,
-                              color: Colors.blue[700],
+                              color: Theme.of(context).accentColor,
                             ),
                           ),
                           shape: RoundedRectangleBorder(
@@ -160,18 +160,18 @@ class ProfileUser extends StatelessWidget {
                           }),
                     ],
                   )),
-              DropdownButton(
-                  icon: Icon(Icons.arrow_drop_down),
-                  value: _selectedLang,
-                  items: Translation.langs.map((String lang) {
-                    return DropdownMenuItem(value: lang, child: Text(lang));
-                  }).toList(),
-                  onChanged: (String value) {
-                    // updates dropdown selected value
-                    //setState(() => _selectedLang = value);
-                    // gets language and changes the locale
-                    Translation().changeLocale(value);
-                  }),
+              // DropdownButton(
+              //     icon: Icon(Icons.arrow_drop_down),
+              //     value: _selectedLang,
+              //     items: Translation.langs.map((String lang) {
+              //       return DropdownMenuItem(value: lang, child: Text(lang));
+              //     }).toList(),
+              //     onChanged: (String value) {
+              //       // updates dropdown selected value
+              //       //setState(() => _selectedLang = value);
+              //       // gets language and changes the locale
+              //       Translation().changeLocale(value);
+              //     }),
             ],
           ),
         );

@@ -16,10 +16,19 @@ class ReservationPage extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: MyNavictionBar(selectedItem: 2),
       appBar: AppBar(
-        backgroundColor: Colors.blue[700],
-        //title: Text('Details Center', style: TextStyle(color: Colors.white)),
-        // titleSpacing: 00.0,
-        // toolbarHeight: 45.2,
+   backgroundColor: Theme.of(context).primaryColor,
+        titleSpacing: 00.0,
+        centerTitle: true,
+        toolbarHeight: 60.2,
+        elevation: 10,
+        title: Text(
+          ' My Reservation'.tr,
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'DancingScript',
+            fontSize: 35,
+          ),
+        ),
       ),
       body: GetBuilder<ReservationController>(
         builder: (controller) {

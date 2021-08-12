@@ -27,7 +27,7 @@ class ServiceDeteils extends StatelessWidget {
         centerTitle: true,
         toolbarHeight: 60.2,
         elevation: 10,
-        backgroundColor: Colors.blue[700],
+        backgroundColor: Theme.of(context).accentColor,
       ),
       body: GetBuilder<ServiceController>(
         builder: (controller) {
@@ -71,7 +71,7 @@ class ServiceDeteils extends StatelessWidget {
                             '${sInfo.name}',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: Colors.blue[700],
+                              color:Theme.of(context).accentColor,
                               fontSize: 35,
                               //fontFamily: 'DancingScript',
                             ),
@@ -81,7 +81,7 @@ class ServiceDeteils extends StatelessWidget {
                             ? Text(
                                 "User ID",
                                 style: TextStyle(
-                                  color: Colors.blue[700],
+                                  color:Theme.of(context).accentColor,
                                   fontSize: 28,
                                   //fontFamily: 'DancingScript',
                                 ),
@@ -91,7 +91,7 @@ class ServiceDeteils extends StatelessWidget {
                             ? Text(
                                 "0057",
                                 style: TextStyle(
-                                  color: Colors.blue[700],
+                                  color:Theme.of(context).accentColor,
                                   fontSize: 55,
                                   //fontFamily: 'DancingScript',
                                 ),
@@ -382,7 +382,7 @@ class ServiceDeteils extends StatelessWidget {
                                     style: ElevatedButton.styleFrom(
                                       shape: CircleBorder(),
                                       padding: EdgeInsets.all(10),
-                                      primary: Colors.blue, // <-- Button color
+                                      primary: Theme.of(context).accentColor, // <-- Button color
                                       onPrimary: Colors.red, // <-- Splash color
                                     ),
                                   ),
@@ -392,7 +392,7 @@ class ServiceDeteils extends StatelessWidget {
                                       "Cancel",
                                       style: TextStyle(
                                         fontSize: 18.0,
-                                        color: Colors.blue[700],
+                                        color: Theme.of(context).primaryColor,
                                       ),
                                     ),
                                   ),
@@ -415,7 +415,7 @@ class ServiceDeteils extends StatelessWidget {
                                     style: ElevatedButton.styleFrom(
                                       shape: CircleBorder(),
                                       padding: EdgeInsets.all(10),
-                                      primary: Colors.blue, // <-- Button color
+                                      primary:Theme.of(context).accentColor, // <-- Button color
                                       onPrimary: Colors.red, // <-- Splash color
                                     ),
                                   ),
@@ -425,7 +425,7 @@ class ServiceDeteils extends StatelessWidget {
                                       "I arrived",
                                       style: TextStyle(
                                         fontSize: 18.0,
-                                        color: Colors.blue[700],
+                                        color:  Theme.of(context).primaryColor,
                                       ),
                                     ),
                                   ),
@@ -495,7 +495,7 @@ class ServiceDeteils extends StatelessWidget {
                             style: ElevatedButton.styleFrom(
                               shape: CircleBorder(),
                               padding: EdgeInsets.all(50),
-                              primary: Colors.blue, // <-- Button color
+                              primary:Theme.of(context).accentColor, // <-- Button color
                               onPrimary: Colors.red, // <-- Splash color
                             ),
                           )

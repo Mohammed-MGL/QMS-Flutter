@@ -24,13 +24,13 @@ class ServiceCentersPage extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'DancingScript',
-              fontSize: 28,
+              fontSize: 35,
             )),
         titleSpacing: 00.0,
         centerTitle: true,
         toolbarHeight: 60.2,
         elevation: 10,
-        backgroundColor: Colors.blue[700],
+        backgroundColor: Theme.of(context).primaryColor,
         // actions: <Widget>[
         //   IconButton(
         //     icon: Icon(Icons.notifications_active),
@@ -54,7 +54,7 @@ class ServiceCentersPage extends StatelessWidget {
                   IconButton(
                       icon: Icon(
                         Icons.qr_code_scanner_rounded,
-                        color: Colors.blue[700],
+                        color:  Theme.of(context).primaryColor,
                       ),
                       onPressed: () {
                         Get.to(() => QrPage(), transition: Transition.fadeIn);
@@ -73,6 +73,7 @@ class ServiceCentersPage extends StatelessWidget {
                         suffixIcon: IconButton(
                           icon: Icon(
                             Icons.search,
+                            color: Theme.of(context).primaryColor,
                           ),
                           onPressed: scController.searchForServiceCenters,
                           alignment: Alignment.bottomRight,

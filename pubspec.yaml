@@ -22,7 +22,7 @@ environment:
 
 dependencies:
   flutter:
-    sdk: flutter
+    sdk: flutter  
   get: ^4.1.1
   http: ^0.13.1
   qr_code_scanner: 0.2.1
@@ -32,6 +32,7 @@ dependencies:
   firebase_messaging: ^10.0.3
   pull_to_refresh: ^2.0.0
   flutter_local_notifications: ^6.0.0
+  hexcolor: ^1.0.4
   
   
   # flutter_local_notifications: ^8.0.0
@@ -46,6 +47,17 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.9.1 
+  flutter_native_splash: ^1.2.1 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/x.png"
+flutter_native_splash:
+  color:  "#ffffff"
+  image: assets/images/v.png
+  android: true
+  ios: true   
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

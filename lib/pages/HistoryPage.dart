@@ -14,17 +14,17 @@ class HistoryPage extends StatelessWidget {
         selectedItem: 3,
       ),
       appBar: AppBar(
-        backgroundColor: Colors.blue[700],
+        backgroundColor: Theme.of(context).primaryColor,
         titleSpacing: 00.0,
         centerTitle: true,
         toolbarHeight: 60.2,
         elevation: 10,
         title: Text(
-          ' My History',
+          ' My History'.tr,
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'DancingScript',
-            fontSize: 28,
+            fontSize: 35,
           ),
         ),
       ),
@@ -37,7 +37,7 @@ class HistoryPage extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.only(top: 10.0, bottom: 8.0, left: 15.0),
-                  child: Text("My Reservation:",
+                  child: Text("My Reservation:".tr,
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.normal,

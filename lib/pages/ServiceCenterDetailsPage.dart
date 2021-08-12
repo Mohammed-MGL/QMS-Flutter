@@ -22,7 +22,7 @@ class ServiceCenterDetailsPage extends StatelessWidget {
         // titleSpacing: 00.0,
         // toolbarHeight: 45.2,
 
-        backgroundColor: Colors.blue[700],
+        backgroundColor: Theme.of(context).primaryColor,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.favorite),
@@ -107,7 +107,7 @@ class ServiceCenterDetailsPage extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Text(
-                                  "Location : ${mySC.serviceCenter.location}",
+                                  "Location :".tr+" ${mySC.serviceCenter.location}",
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal,
@@ -119,7 +119,7 @@ class ServiceCenterDetailsPage extends StatelessWidget {
                                 margin: EdgeInsets.all(0),
                                 child: IconButton(
                                     icon: Icon(Icons.location_on_rounded),
-                                    color: Colors.blue[700],
+                                    color:Theme.of(context).accentColor,
                                     onPressed: () {
                                       print("object");
                                       _launchURL(
@@ -132,7 +132,7 @@ class ServiceCenterDetailsPage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Expanded(
-                            child: Text("Phone : ${mySC.serviceCenter.phone}",
+                            child: Text("Phone".tr+": ${mySC.serviceCenter.phone}",
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.normal,
@@ -142,26 +142,26 @@ class ServiceCenterDetailsPage extends StatelessWidget {
                         ExpansionTile(
                           backgroundColor: Colors.white24,
                           leading: Icon(Icons.event),
-                          title: Text('Working Hours'),
+                          title: Text('Working Hours'.tr),
                           children: <Widget>[
                             ListTile(
                                 title:
-                                    Text('saturday ${mySC.workTime.saturday}')),
+                                    Text('saturday'.tr+'${mySC.workTime.saturday}')),
                             ListTile(
-                                title: Text('sunday ${mySC.workTime.sunday}')),
+                                title: Text('sunday'.tr+'${mySC.workTime.sunday}')),
                             ListTile(
-                                title: Text('monday  ${mySC.workTime.monday}')),
+                                title: Text('monday'.tr +' ${mySC.workTime.monday}')),
                             ListTile(
                                 title:
-                                    Text('tuesday ${mySC.workTime.tuesday}')),
+                                    Text('tuesday'.tr+' ${mySC.workTime.tuesday}')),
                             ListTile(
                                 title: Text(
-                                    'wednesday ${mySC.workTime.wednesday}')),
+                                    'wednesday'.tr+ '${mySC.workTime.wednesday}')),
                             ListTile(
                                 title:
-                                    Text('thursday ${mySC.workTime.thursday}')),
+                                    Text('thursday'.tr+' ${mySC.workTime.thursday}')),
                             ListTile(
-                                title: Text('friday ${mySC.workTime.friday}')),
+                                title: Text('friday'.tr+ '${mySC.workTime.friday}')),
                           ],
                         ),
                       ],
@@ -170,7 +170,7 @@ class ServiceCenterDetailsPage extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 10.0, bottom: 8.0, left: 15.0),
-                  child: Text("Services:",
+                  child: Text("Services:".tr,
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.normal,

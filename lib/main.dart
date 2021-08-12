@@ -16,13 +16,14 @@ import 'package:qms/pages/SignupPage.dart';
 import 'package:qms/Translation.dart';
 // import './pages/home.dart';
 // import './pages/login.dart';
-import './pages/welcome1.dart';
+//import './pages/welcome1.dart';
 //import './pages/Login1.dart';
 import 'dependencies.dart';
 import 'firebase/cloud_messaging/messaging_service.dart';
 import 'pages/AccountPage.dart';
 import 'pages/ServiceCenterDetailsPage.dart';
 import 'package:firebase_core/firebase_core.dart';
+//import 'package:hexcolor/hexcolor.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,7 +39,13 @@ Future<void> main() async {
     _defaultHome = ServiceCentersPage();
   }
   runApp(GetMaterialApp(
-     
+       theme: ThemeData(
+         
+          primaryColor:   Color(0xff4a0072),
+       // primaryColor:   Colors.purple[500],
+        accentColor: Color(0xff7b1fa2),
+        accentColorBrightness: Brightness.dark
+      ),
       //locale: Get.deviceLocale,
       locale :Translation.locale,
       fallbackLocale: Translation.fallbackLocale,
