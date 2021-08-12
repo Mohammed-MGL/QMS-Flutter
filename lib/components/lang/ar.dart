@@ -1,5 +1,6 @@
 const Map<String, String> ar = {
   'Home': 'الرئيسية',
+  ' My Favorite ':'المفضلة',
   "Services:":"الخدمات",
   'friday':'الجمعة',
   'thursday':'الخميس',

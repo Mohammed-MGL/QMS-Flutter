@@ -19,7 +19,7 @@ class FavoritePage extends StatelessWidget {
         toolbarHeight: 60.2,
         elevation: 10,
         title: Text(
-          ' My Favorite ',
+          ' My Favorite '.tr,
           style: TextStyle(
             color: Colors.white,
             fontFamily: 'DancingScript',
