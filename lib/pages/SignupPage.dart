@@ -29,12 +29,12 @@ class SignupPage extends StatelessWidget {
         ),
 
         //labelText: 'Last Name',
-        hintText: "User Name",
+        hintText: "User Name".tr,
         hintStyle: TextStyle(fontSize: 16, color: Colors.white),
       ),
       validator: (String value) {
         if (value.isEmpty) {
-          return 'Username is Required';
+          return 'Username is Required'.tr;
         }
         return null;
       },
@@ -61,12 +61,12 @@ class SignupPage extends StatelessWidget {
           ),
 
           //labelText: 'Last Name',
-          hintText: "Email",
+          hintText: "Email".tr,
           hintStyle: TextStyle(fontSize: 16, color: Colors.white),
         ),
         validator: (String value) {
           if (value.isEmpty) {
-            return 'Email is Required';
+            return 'Email is Required'.tr;
           }
 
           if (!RegExp(
@@ -102,13 +102,13 @@ class SignupPage extends StatelessWidget {
           ),
 
           //labelText: 'Last Name',
-          hintText: "Password",
+          hintText: "Password".tr,
           hintStyle: TextStyle(fontSize: 16, color: Colors.white),
         ),
         keyboardType: TextInputType.visiblePassword,
         validator: (String value) {
           if (value.isEmpty) {
-            return 'Password is Required';
+            return 'Password is Required'.tr;
           }
 
           return null;
@@ -137,16 +137,16 @@ class SignupPage extends StatelessWidget {
           ),
 
           //labelText: 'Last Name',
-          hintText: "Confirm Password",
+          hintText: "Confirm Password".tr,
           hintStyle: TextStyle(fontSize: 16, color: Colors.white),
         ),
         keyboardType: TextInputType.visiblePassword,
         validator: (String value) {
           if (value.isEmpty) {
-            return ' Confirm Password is Required';
+            return ' Confirm Password is Required'.tr;
           }
           if (value != _pass.text) {
-            return 'Passwords do not match';
+            return 'Password do not match'.tr;
           }
 
           return null;
@@ -175,12 +175,12 @@ class SignupPage extends StatelessWidget {
           ),
 
           //labelText: 'Last Name',
-          hintText: "First Name",
+          hintText: "First Name".tr,
           hintStyle: TextStyle(fontSize: 16, color: Colors.white),
         ),
         validator: (String value) {
           if (value.isEmpty) {
-            return 'FirstName is Required';
+            return 'FirstName is Required'.tr;
           }
 
           return null;
@@ -207,12 +207,12 @@ class SignupPage extends StatelessWidget {
         ),
 
         //labelText: 'Last Name',
-        hintText: "Last Name",
+        hintText: "Last Name".tr,
         hintStyle: TextStyle(fontSize: 16, color: Colors.white),
       ),
       validator: (String value) {
         if (value.isEmpty) {
-          return 'LastName is Required';
+          return 'LastName is Required'.tr;
         }
 
         return null;
@@ -259,7 +259,7 @@ class SignupPage extends StatelessWidget {
         Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            title: Text('Sign Up',
+            title: Text('Sign Up'.tr,
                 style: TextStyle(
                   color: Theme.of(context).accentColor,
                   fontFamily: 'DancingScript',
@@ -281,7 +281,7 @@ class SignupPage extends StatelessWidget {
                     alignment: Alignment.center,
                     //  width: MediaQuery.of(context).size.width,
                     child: Text(
-                      'Inter Your Details :',
+                      'Inter Your Details :'.tr,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 35,
@@ -291,7 +291,7 @@ class SignupPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.width * 0.03,
+                  height: MediaQuery.of(context).size.width * 0.02,
                 ),
                 //margin: EdgeInsets.all(24),
                 Form(
@@ -315,7 +315,7 @@ class SignupPage extends StatelessWidget {
                           horizontal: 20.0,
                         ),
                         child: Text(
-                          " Submit ",
+                          " Submit ".tr,
                           style: TextStyle(
                             fontSize: 20.0,
                             color:Theme.of(context).accentColor,
@@ -328,7 +328,7 @@ class SignupPage extends StatelessWidget {
                       ),
                       Center(
                       child: InkWell(
-                        child: Text('Signup ? ',
+                        child: Text('Signup ? '.tr,
                             style:
                                 TextStyle(color: Colors.white, fontSize: 15.0)),
                         onTap: () {

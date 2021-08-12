@@ -1,5 +1,8 @@
 const Map<String, String> ar = {
   'Home': 'الرئيسية',
+  "Confirm Password":"تأكيد كلمة السر",
+  ' Confirm Password is Required':'تأكيد كلمة السر مطلوب',
+  'Password do not match':'كلمة السر غير مطابقة',
   ' My Favorite ':'المفضلة',
   "Services:":"الخدمات",
   'friday':'الجمعة',
@@ -21,7 +24,6 @@ const Map<String, String> ar = {
   'Sign Up': 'تسجيل حساب جديد',
   'FirstName is Required': "الاسم الأول مطلوب",
   'LastName is Required': "الاسم الأخير مطلوب",
-  "Confirm Password": "تأكيد كلمة السر",
   'Passwords do not match': 'كلمة السر غير مطابقة',
   'Confirm Password is Required': "تأكيد كلمة السر مطلوب",
   'Email is Required': "البريد الالكتروني مطلوب",

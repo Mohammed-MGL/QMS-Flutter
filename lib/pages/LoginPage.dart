@@ -232,10 +232,13 @@ class LoginPage extends StatelessWidget {
                         },
                       ),
                     ),
-                      DropdownButton(
+                     SizedBox(
+                  height: MediaQuery.of(context).size.width * 0.07,
+                ),
+                      DropdownButton(  style: const TextStyle(color: Colors.white),
+                      iconEnabledColor: Colors.white,
               icon: Icon(Icons.arrow_drop_down),
               value: _selectedLang,
-              dropdownColor: Theme.of(context).primaryColor,
               items: Translation.langs.map((String lang) {
                 return DropdownMenuItem(value: lang, child: Text(lang));
               }).toList(),
