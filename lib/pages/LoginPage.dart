@@ -235,11 +235,13 @@ class LoginPage extends StatelessWidget {
                      SizedBox(
                   height: MediaQuery.of(context).size.width * 0.07,
                 ),
-                      DropdownButton(  style: const TextStyle(color: Colors.white),
-                      iconEnabledColor: Colors.white,
+                      DropdownButton(  
+                        //style: const TextStyle(color: Colors.white),
+                     iconEnabledColor: Colors.black,
               icon: Icon(Icons.arrow_drop_down),
               value: _selectedLang,
               items: Translation.langs.map((String lang) {
+
                 return DropdownMenuItem(value: lang, child: Text(lang));
               }).toList(),
               onChanged: (String value) {
