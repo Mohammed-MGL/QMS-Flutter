@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/services.dart';
+
 import 'package:get/get.dart';
 import 'package:qms/Controllers/AccountController.dart';
 import 'package:qms/Controllers/ServiceCentersController.dart';
@@ -29,8 +32,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await MessagingService().initMessaging();
-
-
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   Widget _defaultHome = LoginPage();
 
   AccountController account = AccountController();
@@ -39,18 +42,16 @@ Future<void> main() async {
     _defaultHome = ServiceCentersPage();
   }
   runApp(GetMaterialApp(
-       theme: ThemeData(
-         
-          primaryColor:   Color(0xff4a0072),
-       // primaryColor:   Colors.purple[500],
+    theme: ThemeData(
+        primaryColor: Color(0xff4a0072),
+        // primaryColor:   Colors.purple[500],
         accentColor: Color(0xff7b1fa2),
-        accentColorBrightness: Brightness.dark
-      ),
-      //locale: Get.deviceLocale,
-      locale :Translation.locale,
-      fallbackLocale: Translation.fallbackLocale,
-      translations:Translation(),
-      
+        accentColorBrightness: Brightness.dark),
+    //locale: Get.deviceLocale,
+    locale: Translation.locale,
+    fallbackLocale: Translation.fallbackLocale,
+    translations: Translation(),
+
     smartManagement: SmartManagement.keepFactory,
     initialBinding: Dependencies(),
     debugShowCheckedModeBanner: false,
