@@ -140,7 +140,7 @@ class _QrPageState extends State<QrPage> {
           Get.back();
           Get.defaultDialog(
             title: "T",
-            content: Text('No concton'),
+            content: Text('NoConnection'),
             barrierDismissible: true,
           );
         } else {

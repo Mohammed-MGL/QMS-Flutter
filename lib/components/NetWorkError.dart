@@ -28,7 +28,7 @@ class NetWorkError extends StatelessWidget {
                 ),
                 Container(color:  Colors.grey[200],
                   child: InkWell(
-                    child: Text(" Try Again ? ",
+                    child: Text(" Try Again ? ".tr,
                         style: TextStyle(
                             color: Colors.black54,
                             fontWeight: FontWeight.bold,

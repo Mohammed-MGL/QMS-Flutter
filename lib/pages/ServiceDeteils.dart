@@ -17,7 +17,7 @@ class ServiceDeteils extends StatelessWidget {
         selectedItem: 0,
       ),
       appBar: AppBar(
-        title: Text('Service Details',
+        title: Text('Service Details'.tr,
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'DancingScript',
@@ -27,7 +27,7 @@ class ServiceDeteils extends StatelessWidget {
         centerTitle: true,
         toolbarHeight: 60.2,
         elevation: 10,
-        backgroundColor: Theme.of(context).accentColor,
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: GetBuilder<ServiceController>(
         builder: (controller) {
@@ -79,7 +79,7 @@ class ServiceDeteils extends StatelessWidget {
                         ),
                         (isinq)
                             ? Text(
-                                "User ID",
+                                "User ID".tr,
                                 style: TextStyle(
                                   color:Theme.of(context).accentColor,
                                   fontSize: 28,
@@ -89,7 +89,7 @@ class ServiceDeteils extends StatelessWidget {
                             : Container(),
                         (isinq)
                             ? Text(
-                                "0057",
+                                "${sInfo.uid}",
                                 style: TextStyle(
                                   color:Theme.of(context).accentColor,
                                   fontSize: 55,
@@ -97,72 +97,7 @@ class ServiceDeteils extends StatelessWidget {
                                 ),
                               )
                             : Container(),
-                        // Container(
-                        //   color: Colors.red,
-                        //   width: Get.width * .75,
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.center,
-                        //     children: [
-                        //       Padding(
-                        //         padding: const EdgeInsets.fromLTRB(5, 5, 5, 2),
-                        //         child: Text(
-                        //           "88",
-                        //           style: TextStyle(
-                        //             // color: Colors.blue[900],
-                        //             fontSize: 35,
-                        //             // fontFamily: 'DancingScript',
-                        //           ),
-                        //         ),
-                        //       ),
-                        //       Icon(
-                        //         Icons.people_alt_sharp,
-                        //         size: 35,
-                        //       ),
-                        //       Text(
-                        //         "Customers are waiting",
-                        //         style: TextStyle(
-                        //           // color: Colors.blue[900],
-                        //           fontSize: 22,
-                        //           // fontFamily: 'DancingScript',
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        // Container(
-                        //   color: Colors.red,
-                        //   width: Get.width * .75,
-                        //   child: Row(
-
-                        //     mainAxisAlignment: MainAxisAlignment.center,
-                        //     children: [
-                        //       Padding(
-                        //         padding: const EdgeInsets.fromLTRB(5, 5, 0, 2),
-                        //         child: Text(
-                        //           "88",
-                        //           style: TextStyle(
-                        //             // color: Colors.blue[900],
-                        //             fontSize: 35,
-                        //             // fontFamily: 'DancingScript',
-                        //           ),
-                        //         ),
-                        //       ),
-                        //       Text("Min"),
-                        //       Icon(
-                        //         Icons.access_time,
-                        //         size: 35,
-                        //       ),
-                        //       Text(
-                        //         "Expected waiting time",
-                        //         style: TextStyle(
-                        //           // color: Colors.blue[900],
-                        //           fontSize: 22,
-                        //           // fontFamily: 'DancingScript',
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
+                      
                         (!sInfo.isServing)?Container(
                           // color: Colors.red,
                           margin: EdgeInsets.only(top: 10),
@@ -192,7 +127,7 @@ class ServiceDeteils extends StatelessWidget {
                                 ],
                               ),
                               Text(
-                                "Customers waiting",
+                                "Customers waiting".tr,
                                 style: TextStyle(
                                   // color: Colors.blue[900],
                                   fontSize: 22,
@@ -241,7 +176,7 @@ class ServiceDeteils extends StatelessWidget {
                                 ],
                               ),
                               Text(
-                                "Expected waiting time",
+                                "Expected waiting time".tr,
                                 style: TextStyle(
                                   // color: Colors.blue[900],
                                   fontSize: 22,
@@ -255,103 +190,16 @@ class ServiceDeteils extends StatelessWidget {
                         (!sInfo.isServing)?Padding(
                           padding: const EdgeInsets.fromLTRB(8, 0, 8, 10),
                           child: Text(
-                            "\"Only 5 of them are inside the center, it will take 10 minutes\" testt",
+                            "\"Only ${sInfo.queueCountInSC}"+" of them are inside the center, it will take + ${sInfo.waitingTimeInCS}+ minutes\" testt",
                             textAlign: TextAlign.center,
                           ),
                         ):Container(),
-                        // Container(
-                        //   margin: EdgeInsets.all(12.0),
-                        //   height: 170,
-                        //   decoration: BoxDecoration(
-                        //     color: Colors.blue[700].withOpacity(.20),
-                        //     border: Border.all(
-                        //       color: Colors.blue[700],
-                        //     ),
-                        //     shape: BoxShape.circle,
-                        //   ),
-                        //   //alignment: Alignment.center,
-                        //   //  width: MediaQuery.of(context).size.width,
-                        //   child: Padding(
-                        //     padding: const EdgeInsets.all(40.0),
-                        //     child: Column(
-                        //       children: [
-                        //         Text(
-                        //           'Total Number:${sInfo.queueCount} ',
-                        //           style: TextStyle(
-                        //             color: Colors.blue[900],
-                        //             fontSize: 14,
-                        //             // fontFamily: 'DancingScript',
-                        //           ),
-                        //         ),
-                        //         SizedBox(
-                        //           height:
-                        //               MediaQuery.of(context).size.width * 0.1,
-                        //         ),
-                        //         Text(
-                        //           'WaitingTime:${sInfo.waitingTime}',
-                        //           style: TextStyle(
-                        //             color: Colors.blue[900],
-                        //             fontSize: 14,
-                        //             //fontFamily: 'DancingScript',
-                        //           ),
-                        //         ),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
+                       
                       ],
                     ),
                   ),
                 ),
-                // SizedBox(
-                //   height: MediaQuery.of(context).size.width * 0.1,
-                // ),
-
-                // SizedBox(
-                //   height: MediaQuery.of(context).size.width * 0.15,
-                // ),
-                // Column(
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   children: [
-                //     RaisedButton(
-                // padding: EdgeInsets.symmetric(
-                //    vertical: 8.0,
-                //   horizontal: 15.0,
-                //       ),
-                //       child: Text(
-                //         "Book Now ",
-                //         style: TextStyle(
-                //           fontSize: 20.0,
-                //           color: Colors.blue[700],
-                //         ),
-                //       ),
-                //       shape: RoundedRectangleBorder(
-                //           borderRadius: BorderRadius.circular(20.0)),
-                //       color: Colors.white,
-                //       onPressed: () {},
-                //     ), SizedBox(
-                //   height: MediaQuery.of(context).size.width * 0.03,
-                // ),
-                //     RaisedButton(
-                //       padding: EdgeInsets.symmetric(
-                //         vertical: 8.0,
-                //         horizontal: 15.0,
-                //       ),
-                //       child: Text(
-                //         " Delete Book",
-                //         style: TextStyle(
-                //           fontSize: 20.0,
-                //           color: Colors.blue[700],
-                //         ),
-                //       ),
-                //       shape: RoundedRectangleBorder(
-                //           borderRadius: BorderRadius.circular(20.0)),
-                //       color: Colors.white,
-                //       onPressed: () {},
-
-                // SizedBox(
-                //   height: MediaQuery.of(context).size.width * 0.2,
-                // ),
+               
                 Container(
                     margin: EdgeInsets.fromLTRB(12, 25, 12, 0),
                     // color: Colors.red,
@@ -389,7 +237,7 @@ class ServiceDeteils extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.only(top: 3),
                                     child: Text(
-                                      "Cancel",
+                                      "Cancel".tr,
                                       style: TextStyle(
                                         fontSize: 18.0,
                                         color: Theme.of(context).primaryColor,
@@ -422,7 +270,7 @@ class ServiceDeteils extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.only(top: 3),
                                     child: Text(
-                                      "I arrived",
+                                      "I arrived".tr,
                                       style: TextStyle(
                                         fontSize: 18.0,
                                         color:  Theme.of(context).primaryColor,
@@ -432,53 +280,7 @@ class ServiceDeteils extends StatelessWidget {
                                 ],
                               ),
 
-                              // MaterialButton(
-                              //   child: Text(
-                              //     " Delete Book ",
-                              //     style: TextStyle(
-                              //       fontSize: 20.0,
-                              //       color: Colors.blue[700],
-                              //     ),
-                              //   ),
-                              //   padding: EdgeInsets.symmetric(
-                              //     vertical: 6.0,
-                              //     horizontal: 6.0,
-                              //   ),
-                              //   shape: RoundedRectangleBorder(
-                              //       borderRadius: BorderRadius.circular(20.0)),
-                              //   color: Colors.white,
-                              //   onPressed: (isinq)
-                              //       ? () {
-                              //           controller.cancelReservation(sInfo.id);
-                              //         }
-                              //       : null,
-                              // ),
-                              // SizedBox(
-                              //   //height: MediaQuery.of(context).size.width * 0.03,
-                              //   width: MediaQuery.of(context).size.width * 0.1,
-                              // ),
-                              // MaterialButton(
-                              //   padding: EdgeInsets.symmetric(
-                              //     vertical: 6.0,
-                              //     horizontal: 20.0,
-                              //   ),
-                              //   child: Text(
-                              //     " I arrived ",
-                              //     style: TextStyle(
-                              //       fontSize: 20.0,
-                              //       color: Colors.blue[700],
-                              //     ),
-                              //   ),
-                              //   shape: RoundedRectangleBorder(
-                              //     borderRadius: BorderRadius.circular(20.0),
-                              //   ),
-                              //   color: Colors.white,
-                              //   onPressed: (isinq)
-                              //       ? () {
-                              //           controller.userInCenter(sInfo.id);
-                              //         }
-                              //       : null,
-                              // ),
+                            
                             ],
                           ):Container()
                         : ElevatedButton(
@@ -488,7 +290,7 @@ class ServiceDeteils extends StatelessWidget {
                                   }
                                 : null,
                             child: Text(
-                              "Book Now",
+                              "Book Now".tr,
                               style: TextStyle(
                                   fontSize: 20.0, color: Colors.white),
                             ),
@@ -499,36 +301,9 @@ class ServiceDeteils extends StatelessWidget {
                               onPrimary: Colors.red, // <-- Splash color
                             ),
                           )
-                    // Padding(
-                    //     padding: const EdgeInsets.all(8.0),
-                    //     child: MaterialButton(
-                    //       //disabledColor: Colors.grey,
-                    //       disabledTextColor: Colors.grey,
-                    //       padding: EdgeInsets.symmetric(
-                    //         vertical: 10.0,
-                    //         horizontal: 15.0,
-                    //       ),
-                    //       child: Text(
-                    //         "Book Now ",
-                    //         style: TextStyle(
-                    //           fontSize: 20.0,
-                    //           color: Colors.blue[700],
-                    //         ),
-                    //       ),
-                    //       shape: RoundedRectangleBorder(
-                    //           borderRadius: BorderRadius.circular(20.0)),
-                    //       color: Colors.white,
-                    //       onPressed: (!isinq)
-                    //           ? () {
-                    //               controller.bookInService(sInfo.id);
-                    //             }
-                    //           : null,
-                    //     ),
-                    //   ),
+                   
                     ),
-                // SizedBox(
-                //   height: MediaQuery.of(context).size.width * 0.03,
-                // ),
+               
               ],
             ),
           );

@@ -1,10 +1,13 @@
 class ServiceModel {
+  
   int id;
   String scname;
   int uid;
   String name;
   int queueCount;
-  String waitingTime;
+  int waitingTime;
+  int queueCountInSC;
+  int waitingTimeInCS;
   bool isInQ;
   bool isInCenter;
   bool isServing;
@@ -18,6 +21,8 @@ class ServiceModel {
       this.name,
       this.queueCount,
       this.waitingTime,
+      this.queueCountInSC,
+      this.waitingTimeInCS,
       this.isInQ,
       this.isInCenter,
       this.isServing,
@@ -31,6 +36,8 @@ class ServiceModel {
     name = json['name'];
     queueCount = json['queueCount'];
     waitingTime = json['waitingTime'];
+    queueCountInSC = json['queueCountInSC'];
+    waitingTimeInCS = json['waitingTimeInCS'];
     isInQ = json['is_inQ'];
     isInCenter = json['is_InCenter'];
     isServing = json['is_serving'];
@@ -46,6 +53,8 @@ class ServiceModel {
     data['name'] = this.name;
     data['queueCount'] = this.queueCount;
     data['waitingTime'] = this.waitingTime;
+    data['queueCountInSC'] = this.queueCountInSC;
+    data['waitingTimeInCS'] = this.waitingTimeInCS;
     data['is_inQ'] = this.isInQ;
     data['is_InCenter'] = this.isInCenter;
     data['is_serving'] = this.isServing;
