@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:qms/Controllers/FavoriteController.dart';
 import 'package:qms/Controllers/ReservationController.dart';
 import 'package:qms/pages/FavoritePage.dart';
 import 'package:qms/pages/HistoryPage.dart';
@@ -35,6 +36,7 @@ class MyNavictionBar extends StatelessWidget {
 
           case 1:
             {
+               Get.find<FavoriteController>().getFavList();
               Get.offAll(() => FavoritePage(),transition: Transition.noTransition);
             }
             break;

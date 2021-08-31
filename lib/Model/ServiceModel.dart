@@ -1,5 +1,4 @@
 class ServiceModel {
-  
   int id;
   String scname;
   int uid;
@@ -11,6 +10,7 @@ class ServiceModel {
   bool isInQ;
   bool isInCenter;
   bool isServing;
+  String status;
   String empName;
   String empDeskNumber;
 
@@ -26,6 +26,7 @@ class ServiceModel {
       this.isInQ,
       this.isInCenter,
       this.isServing,
+      this.status,
       this.empName,
       this.empDeskNumber});
 
@@ -41,6 +42,7 @@ class ServiceModel {
     isInQ = json['is_inQ'];
     isInCenter = json['is_InCenter'];
     isServing = json['is_serving'];
+    status = json['status'];
     empName = json['empName'];
     empDeskNumber = json['empDesk_number'];
   }
@@ -58,6 +60,7 @@ class ServiceModel {
     data['is_inQ'] = this.isInQ;
     data['is_InCenter'] = this.isInCenter;
     data['is_serving'] = this.isServing;
+    data['status'] = this.status;
     data['empName'] = this.empName;
     data['empDesk_number'] = this.empDeskNumber;
     return data;

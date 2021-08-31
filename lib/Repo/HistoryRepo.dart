@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:qms/Model/HistoryModel.dart';
 import 'dart:convert' as convert;
@@ -8,7 +6,7 @@ import 'package:qms/Repo/Storage.dart';
 
 class HistoryRepo {
   Storage storage = Storage();
-  String baseUrl = "192.168.43.247:8000";
+  String baseUrl = "192.168.108.98:8000";
 
   Future<List> getHistory(int pagenum) async {
     final urlExtention = '/API/UserHistory/';

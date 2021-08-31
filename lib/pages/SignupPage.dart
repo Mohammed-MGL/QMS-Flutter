@@ -276,7 +276,7 @@ class SignupPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(25.0),
                   child: Container(
                     alignment: Alignment.center,
                     //  width: MediaQuery.of(context).size.width,
@@ -315,7 +315,7 @@ class SignupPage extends StatelessWidget {
                           horizontal: 20.0,
                         ),
                         child: Text(
-                          " Submit ".tr,
+                          'Signup'.tr,
                           style: TextStyle(
                             fontSize: 20.0,
                             color:Theme.of(context).accentColor,
@@ -327,13 +327,16 @@ class SignupPage extends StatelessWidget {
                         onPressed: () => _submit(),
                       ),
                       Center(
-                      child: InkWell(
-                        child: Text('Signup ? '.tr,
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 15.0)),
-                        onTap: () {
-                          Get.to(() => LoginPage());
-                        },
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 20, 0, 15),
+                        child: InkWell(
+                          child: Text(" Submit ? ".tr,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 15.0)),
+                          onTap: () {
+                            Get.offAll(() => LoginPage());
+                          },
+                        ),
                       ),
                     ),
                     ],

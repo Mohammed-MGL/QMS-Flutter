@@ -12,6 +12,7 @@ class ReservationController extends GetxController {
   int pagenum;
   bool is_ThereNext = false;
   bool response = false;
+  bool is_loding = true;
 
   ScrollController scrollController = ScrollController(
       // initialScrollOffset: 0.0,
@@ -51,9 +52,10 @@ class ReservationController extends GetxController {
     if (rs[0] == 1) {
       reservInfo = rs[1];
       is_ThereNext = reservInfo.next;
+      is_loding =false ;
       update();
-    } else if (rs[0] == 1) {
-      Get.to(() => LoginPage());
+    } else if (rs[0] == 2) {
+      Get.offAll(() => LoginPage());
     }
   }
 
@@ -67,7 +69,7 @@ class ReservationController extends GetxController {
         reservInfo.results.addAll(temp.results);
         update();
       } else if (rs[0] == 2) {
-        Get.to(() => LoginPage());
+        Get.offAll(() => LoginPage());
       }
     }
   }

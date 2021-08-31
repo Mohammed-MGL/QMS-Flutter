@@ -29,6 +29,19 @@ class Storage {
     await storage.delete(key: "FCMtoken");
   }
 
+    Future<void> saveFavSC(String favList) async {
+    await storage.write(key: "favList", value: favList);
+  }
+
+  Future<String> readFavSC() async {
+    var res = await storage.read(key: "favList");
+    return res;
+  }
+
+  Future<void> deleteFavSC() async {
+    await storage.delete(key: "favList");
+  }
+
 // // Read value
 //   String value = await storage.read(key: key);
 

@@ -5,6 +5,7 @@ import 'package:qms/Controllers/ServiceCentersController.dart';
 import 'package:qms/pages/SignupPage.dart';
 import 'ServiceCentersPage.dart';
 import 'package:qms/Translation.dart';
+
 class LoginPage extends StatelessWidget {
   LoginPage({Key key}) : super(key: key);
   var _formKey = GlobalKey<FormState>();
@@ -12,7 +13,7 @@ class LoginPage extends StatelessWidget {
 
   String username;
   String password;
- String _selectedLang =Translation.langs.first;
+  String _selectedLang = Translation.langs.first;
 
   Widget _buildUsername() {
     return TextFormField(
@@ -102,7 +103,7 @@ class LoginPage extends StatelessWidget {
           appBar: AppBar(
             title: Text('LOG IN'.tr,
                 style: TextStyle(
-                  color:  Theme.of(context).primaryColor,
+                  color: Theme.of(context).primaryColor,
                   fontFamily: 'DancingScript',
                   fontSize: 28,
                 )),
@@ -200,7 +201,7 @@ class LoginPage extends StatelessWidget {
                           " Submit ".tr,
                           style: TextStyle(
                             fontSize: 20.0,
-                            color:  Theme.of(context).primaryColor,
+                            color: Theme.of(context).primaryColor,
                           ),
                         ),
                         shape: RoundedRectangleBorder(
@@ -213,14 +214,14 @@ class LoginPage extends StatelessWidget {
                       height: MediaQuery.of(context).size.width * 0.04,
                     ),
 
-                    Center(
-                      child: InkWell(
-                        child: Text('Forget Password? '.tr,
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 15.0)),
-                        onTap: () {},
-                      ),
-                    ),
+                    // Center(
+                    //   child: InkWell(
+                    //     child: Text('Forget Password? '.tr,
+                    //         style:
+                    //             TextStyle(color: Colors.white, fontSize: 15.0)),
+                    //     onTap: () {},
+                    //   ),
+                    // ),
                     SizedBox(height: MediaQuery.of(context).size.width * 0.04),
                     Center(
                       child: InkWell(
@@ -232,24 +233,47 @@ class LoginPage extends StatelessWidget {
                         },
                       ),
                     ),
-                     SizedBox(
-                  height: MediaQuery.of(context).size.width * 0.07,
-                ),
-                      DropdownButton(  
-                        //style: const TextStyle(color: Colors.white),
-                     iconEnabledColor: Colors.black,
-              icon: Icon(Icons.arrow_drop_down),
-              value: _selectedLang,
-              items: Translation.langs.map((String lang) {
-
-                return DropdownMenuItem(value: lang, child: Text(lang));
-              }).toList(),
-              onChanged: (String value) {
-                // updates dropdown selected value
-               // setState(() => _selectedLang = value);
-                // gets language and changes the locale
-                Translation().changeLocale(value);
-              },),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.07,
+                    ),
+                    // DropdownButton(
+                    //   //style: const TextStyle(color: Colors.white),
+                    //   iconEnabledColor: Colors.black,
+                    //   icon: Icon(Icons.arrow_drop_down),
+                    //   value: _selectedLang,
+                    //   items: Translation.langs.map((String lang) {
+                    //     return DropdownMenuItem(value: lang, child: Text(lang));
+                    //   }).toList(),
+                    //   onChanged: (String value) {
+                    //     // updates dropdown selected value
+                    //     // setState(() => _selectedLang = value);
+                    //     // gets language and changes the locale
+                    //     Translation().changeLocale(value);
+                    //   },
+                    // ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          InkWell(
+                            child: Text("English".tr,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 15.0)),
+                            onTap: () {
+                              Translation().changeLocale(Translation.langs[0]);
+                            },
+                          ),InkWell(
+                            child: Text("Arabic".tr,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 15.0)),
+                            onTap: () {
+                              Translation().changeLocale(Translation.langs[1]);
+                            },
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),

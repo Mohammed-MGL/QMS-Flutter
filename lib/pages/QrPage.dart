@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:qms/Controllers/ServiceCenterDetailsController.dart';
+import 'package:qms/pages/ServiceCenterDetailsPage.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-import '../Controllers/QRController.dart';
 
 class QrPage extends StatefulWidget {
   QrPage({Key key}) : super(key: key);
@@ -125,39 +126,43 @@ class _QrPageState extends State<QrPage> {
         // qrController.printCode(qrText);
       });
 
-      Get.defaultDialog(
-        title: "Searching",
-        content: CircularProgressIndicator(),
-        barrierDismissible: false,
-      );
+      // Get.defaultDialog(
+      //   title: "Searching",
+      //   content: CircularProgressIndicator(),
+      //   barrierDismissible: false,
+      // );
       // print(1);
       // print(Get.find<QRController>().val);
-      Future.delayed(Duration(seconds: 10), () {
-        print(2);
-        print(Get.find<QRController>().val);
-        if (Get.find<QRController>().val) {
-          Get.back();
-          Get.back();
-          Get.defaultDialog(
-            title: "T",
-            content: Text('NoConnection'),
-            barrierDismissible: true,
-          );
-        } else {
-          Get.back();
-          Get.back();
-          Get.defaultDialog(
-            title: "F",
-            content: Text(''),
-            barrierDismissible: true,
-          );
-        }
-      });
+      // Future.delayed(Duration(seconds: 10), () {
+      //   print(2);
+      //   print(Get.find<QRController>().val);
+      //   if (Get.find<QRController>().val) {
+      //     Get.back();
+      //     Get.back();
+      //     Get.defaultDialog(
+      //       title: "T",
+      //       content: Text('NoConnection'),
+      //       barrierDismissible: true,
+      //     );
+      //   } else {
+      //     Get.back();
+      //     Get.back();
+      //     Get.defaultDialog(
+      //       title: "F",
+      //       content: Text(''),
+      //       barrierDismissible: true,
+      //     );
+      //   }
+      // });
       // print(3);
       // print(Get.find<QRController>().val);
 
       qrText = event.code;
-      Get.find<QRController>().printCode(qrText);
+      print("object===="+qrText);
+
+      print( int.parse(event.code));
+       Get.find<ServiceCenterDetailsController>().getSCDInfo(int.parse(event.code));
+       Get.off(() => ServiceCenterDetailsPage());
     });
   }
 }

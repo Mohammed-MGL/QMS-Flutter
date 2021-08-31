@@ -4,6 +4,7 @@ import 'package:qms/Controllers/ServiceCentersController.dart';
 import 'package:qms/Model/UserModel.dart';
 import 'package:qms/Repo/Storage.dart';
 import 'package:qms/pages/LoginPage.dart';
+import 'package:qms/pages/Profile.dart';
 import 'package:qms/pages/ServiceCentersPage.dart';
 
 // import '../Model/UserModel.dart';
@@ -15,6 +16,7 @@ class AccountController extends GetxController {
 
   Storage storage = Storage();
   UserModel userModel = UserModel();
+  bool is_loding = true;
 
   AccountRepo accountRepo = AccountRepo();
 
@@ -86,17 +88,37 @@ class AccountController extends GetxController {
     await storage.deleteToken();
     var t = await storage.readToken();
     print(t);
-    Get.off(() => LoginPage());
+    Get.offAll(() => LoginPage());
+  }
+
+  void changePass(old_password, password, password2) async {
+    var us = await accountRepo.changePass(
+        old_password: old_password, password: password, password2: password2);
+    if (us[0] == 1) {
+      userModel = us[1];
+      is_loding = false;
+      update();
+
+      Get.offAll(() => ProfileUser());
+    } else if (us[0] == 2) {
+      
+      Get.offAll(() => LoginPage());
+    } else if (us[0] == 3) {
+      Get.defaultDialog(
+        title: "Error",
+        content: Text(us[1]),
+      );
+    }
   }
 
   void getUserInfo() async {
     var us = await accountRepo.getUserInfo();
     if (us[0] == 1) {
-     userModel  = us[1];
-
+      userModel = us[1];
+      is_loding = false;
       update();
     } else if (us[0] == 1) {
-      Get.off(() => LoginPage());
+      Get.offAll(() => LoginPage());
     }
   }
 }

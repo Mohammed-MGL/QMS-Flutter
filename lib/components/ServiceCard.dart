@@ -26,15 +26,19 @@ class ServiceCard extends StatelessWidget {
                   Get.find<ServiceController>().getServiceDetails(service.id);
                 }
               : null,
-          leading: Icon(Icons.image),
+          // leading: Icon(Icons.image),
           title: Text(service.name),
-          subtitle: Text(
-            'انقر للتفاصيل',
-            style: TextStyle(color: Colors.black.withOpacity(0.6)),
-          ),
-          trailing:(service.iSActive)? Text(
-              "${service.qdetails.customersNum}\n ${service.qdetails.waitingtime}"):
-              Text("Offline"),
+
+          trailing: (service.iSActive)
+              ? Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("${service.qdetails.customersNum} "),
+                    Text("${service.qdetails.waitingtime}"),
+                  ],
+                )
+              : Text("Offline"),
         ),
       ),
     );

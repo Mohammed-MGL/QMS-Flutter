@@ -7,7 +7,7 @@ import 'dart:convert' as convert;
 class ServiceRepo {
   Storage storage = Storage();
 
-  String baseUrl = "192.168.43.247:8000";
+  String baseUrl = "192.168.108.98:8000";
 
   Future<List> getServiceDetails(int serviceID) async {
     final urlExtention = 'API/ServiceDetails/$serviceID';

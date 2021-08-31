@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:qms/pages/LoginPage.dart';
 import 'package:qms/pages/ServiceCenterDetailsPage.dart';
 
@@ -14,10 +16,12 @@ class ServiceCentersController extends GetxController {
   int pagenum;
   String searchWord;
   bool is_ThereNext = false;
+  bool is_loding = true;
   bool response = false;
   bool is_Searching = false;
   double containerWidth = 0;
   double containerheight = 0;
+  bool Ent = true;
 
   ScrollController scrollController = ScrollController(
       // initialScrollOffset: 0.0,
@@ -55,7 +59,10 @@ class ServiceCentersController extends GetxController {
   //   super.onReady();
   // }
 
-  void getAllServiceCenters() async {
+  getAllServiceCenters() async {
+    is_loding = true;
+         update();
+
     scrollController.animateTo(
       0.0,
       curve: Curves.easeOut,
@@ -63,15 +70,27 @@ class ServiceCentersController extends GetxController {
     );
     pagenum = 1;
     is_Searching = false;
-    var rs = await scRepo.getAllServiceCenters(pagenum);
+     Ent = true;
+     update();
+     var rs ;
+    try {
+       rs = await scRepo.getAllServiceCenters(pagenum);
+    } on SocketException {
+      Ent = false;
+      is_loding = false;
+      update();
+      return;
+    }
     if (rs[0] == 1) {
       scModel = rs[1];
       response = true;
 
       is_ThereNext = scModel.next;
+      is_loding = false;
+
       update();
     } else if (rs[0] == 2) {
-      Get.to(() => LoginPage());
+      Get.offAll(() => LoginPage());
     }
   }
 
@@ -85,7 +104,7 @@ class ServiceCentersController extends GetxController {
         scModel.results.addAll(temp.results);
         update();
       } else if (rs[0] == 2) {
-        Get.to(() => LoginPage());
+        Get.offAll(() => LoginPage());
       }
     }
   }
@@ -104,6 +123,7 @@ class ServiceCentersController extends GetxController {
       pagenum = 1;
       is_Searching = true;
       searchWord = searchController.text;
+      print("object==" + searchWord);
       var rs = await scRepo.searchForServiceCenters(searchWord, pagenum);
       if (rs[0] == 1) {
         scModel = rs[1];
@@ -114,11 +134,10 @@ class ServiceCentersController extends GetxController {
           is_ThereNext = false;
         update();
       } else if (rs[0] == 2) {
-        Get.to(() => LoginPage());
+        Get.offAll(() => LoginPage());
       }
-    }
-    else
-    cancelSearch();
+    } else
+      cancelSearch();
   }
 
   void getNextSearchPage() async {
@@ -150,8 +169,8 @@ class ServiceCentersController extends GetxController {
       searchForServiceCenters();
   }
 
-  void selectServiceCenter(int scId) {
-    Get.find<ServiceCenterDetailsController>().getSCDInfo(scId);
+  Future<void> selectServiceCenter(int scId) async {
+    await Get.find<ServiceCenterDetailsController>().getSCDInfo(scId);
     Get.to(() => ServiceCenterDetailsPage());
   }
 }

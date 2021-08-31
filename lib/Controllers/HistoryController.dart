@@ -10,6 +10,7 @@ class HistoryController extends GetxController {
 
   int pagenum;
   bool is_ThereNext = false;
+  bool is_loding= true;
   bool response = false;
 
   ScrollController scrollController = ScrollController(
@@ -37,7 +38,7 @@ class HistoryController extends GetxController {
     super.onClose();
   }
 
-  void getHistory() async {
+  getHistory() async {
     scrollController.animateTo(
       0.0,
       curve: Curves.easeOut,
@@ -48,9 +49,10 @@ class HistoryController extends GetxController {
     if (rs[0] == 1) {
       historInfo = rs[1];
       is_ThereNext = historInfo.next;
+      is_loding= false;
       update();
-    } else if (rs[0] == 1) {
-      Get.to(() => LoginPage());
+    } else if (rs[0] == 2) {
+      Get.offAll(() => LoginPage());
     }
   }
 
@@ -64,7 +66,7 @@ class HistoryController extends GetxController {
         historInfo.results.addAll(temp.results);
         update();
       } else if (rs[0] == 2) {
-        Get.to(() => LoginPage());
+        Get.offAll(() => LoginPage());
       }
     }
   }

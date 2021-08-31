@@ -7,13 +7,12 @@ import 'package:qms/Model/UserModel.dart';
 import 'package:qms/pages/LoginPage.dart';
 import 'dart:convert' as convert;
 
-import '../Model/ServiceCenterDetailsModel.dart';
 import 'Storage.dart';
 
 class AccountRepo {
   Storage storage = Storage();
 
-  String baseUrl = "192.168.43.247:8000";
+  String baseUrl = "192.168.108.98:8000";
   // testurl = 'http://127.0.0.1:8000/API/Service_Center_detail/';
 
   Future<List> accountRegister({
@@ -109,6 +108,50 @@ class AccountRepo {
     }
   }
 
+Future<List> changePass({
+    @required String old_password,
+    @required String password,
+
+    @required String password2,
+
+  }) async {
+    final urlExtention = 'API/account/change_password/';
+    String token = await storage.readToken();
+
+    final response = await http.put(
+      (Uri.http(
+        baseUrl,
+        urlExtention,
+      )),
+      headers: <String, String>{
+        "Accept": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
+        'Authorization': 'Bearer $token',
+      },
+      body: convert.jsonEncode(
+          <String, String>{'old_password': old_password, 'password': password, 'password2':password2}),
+    );
+
+    if (response.statusCode == 200) {
+      UserModel rs = UserModel.fromJson(convert.jsonDecode(response.body));
+      dynamic returnList = [1, rs];
+
+      return returnList;
+    } else if (response.statusCode == 401) {
+      storage.deleteToken();
+      dynamic returnList = [2];
+
+      return returnList;
+    }
+    else {
+      print(response.body);
+            dynamic returnList = [3];
+                  return returnList;
+
+
+    }
+  }
+
   Future<bool> isLogin() async {
     // storage.deleteToken();
 
@@ -120,7 +163,7 @@ class AccountRepo {
   }
 
   Future<List> getUserInfo() async {
-    String baseUrl = "192.168.43.247:8000";
+    String baseUrl = "192.168.108.98:8000";
     final urlExtention = '/API/account/profile/';
     String token = await storage.readToken();
 
@@ -146,7 +189,7 @@ class AccountRepo {
   }
 
   Future<Void> sendFCMtoken() async {
-    String baseUrl = "192.168.43.247:8000";
+    String baseUrl = "192.168.108.98:8000";
     final urlExtention = '/API/account/register/FCMtoken/';
     String token = await storage.readToken();
     String fCMtoken = await storage.readFCMToken();

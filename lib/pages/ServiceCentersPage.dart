@@ -7,13 +7,16 @@ import 'QrPage.dart';
 import '../components/MyNavictionBar.dart';
 import '../components/NetWorkError.dart';
 import '../components/ServiceCenterCard.dart';
-import 'package:qms/Translation.dart';
 
-class ServiceCentersPage extends StatelessWidget {
+class ServiceCentersPage extends StatefulWidget {
+  @override
+  _ServiceCentersPageState createState() => _ServiceCentersPageState();
+}
+
+class _ServiceCentersPageState extends State<ServiceCentersPage> {
   @override
   Widget build(BuildContext context) {
     Get.find<ServiceCentersController>().cancelSearch();
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: MyNavictionBar(
@@ -31,21 +34,10 @@ class ServiceCentersPage extends StatelessWidget {
         toolbarHeight: 60.2,
         elevation: 10,
         backgroundColor: Theme.of(context).primaryColor,
-        // actions: <Widget>[
-        //   IconButton(
-        //     icon: Icon(Icons.notifications_active),
-        //     onPressed: () {},
-        //   ),
-        //   // IconButton(
-        //   //   icon: Icon(Icons.settings),
-        //   //   onPressed: () {},
-        //   // )
-        // ],
       ),
       body: GetBuilder<ServiceCentersController>(builder: (scController) {
         return Column(
           children: [
-            
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Row(
@@ -54,7 +46,7 @@ class ServiceCentersPage extends StatelessWidget {
                   IconButton(
                       icon: Icon(
                         Icons.qr_code_scanner_rounded,
-                        color:  Theme.of(context).primaryColor,
+                        color: Theme.of(context).primaryColor,
                       ),
                       onPressed: () {
                         Get.to(() => QrPage(), transition: Transition.fadeIn);
@@ -87,38 +79,42 @@ class ServiceCentersPage extends StatelessWidget {
                 ],
               ),
             ),
-            if (scController.response)
-              Expanded(
-                child: Column(
-                  children: [
-                    if (scController.scModel.results.length > 0)
-                      Expanded(
-                        flex: 10,
-                        child: ListView.builder(
-                          controller: scController.scrollController,
-                          shrinkWrap: true,
-                          itemCount: scController.scModel.results.length,
-                          itemBuilder: (context, index) {
-                            if (index ==
-                                    scController.scModel.results.length - 1 &&
-                                scController.is_ThereNext == true) {
-                              return Center(child: CircularProgressIndicator());
-                            }
-                            return ServiceCenterCard(
-                              serviceCenter:
-
-scController.scModel.results[index],
-                              pressedOn: () => scController.selectServiceCenter(
-                                  scController.scModel.results[index].id),
-                            );
-                          },
-                        ),
-                      ),
-                    if (scController.scModel.results.length == 0)
-                      Text("results not found".tr),
-                  ],
-                ),
-              ),
+            (scController.is_loding)
+                ? Expanded(child: Center(child: CircularProgressIndicator()))
+                : Expanded(
+                    flex: 10,
+                    child: RefreshIndicator(
+                      onRefresh: () async {
+                        setState(() {});
+                      },
+                      child: (!scController.Ent)
+                          ? NetWorkError(
+                              buttonHandler:
+                                  scController.retryGetingServiceCenters)
+                          : ListView.builder(
+                              controller: scController.scrollController,
+                              shrinkWrap: true,
+                              itemCount:
+                                  scController.scModel.results.length ?? 0,
+                              itemBuilder: (context, index) {
+                                if (index ==
+                                        scController.scModel.results.length -
+                                            1 &&
+                                    scController.is_ThereNext == true) {
+                                  return Center(
+                                      child: CircularProgressIndicator());
+                                }
+                                return ServiceCenterCard(
+                                  serviceCenter:
+                                      scController.scModel.results[index],
+                                  pressedOn: () => scController
+                                      .selectServiceCenter(scController
+                                          .scModel.results[index].id),
+                                );
+                              },
+                            ),
+                    ),
+                  ),
             AnimatedContainer(
               color: Colors.transparent,
               duration: Duration(milliseconds: 250),
@@ -151,12 +147,7 @@ scController.scModel.results[index],
                 ),
               ),
             ),
-            if (!scController.response)
-              NetWorkError(
-                  buttonHandler: scController.retryGetingServiceCenters)
-                  
           ],
-          
         );
       }),
     );
